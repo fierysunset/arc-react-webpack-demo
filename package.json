@@ -36,6 +36,10 @@
 		"webpack": "^2.2.1"
 	},
 	"devDependencies": {
+		"babel-register": "^6.24.1",
+		"css-loader": "^0.28.1",
+		"extract-text-webpack-plugin": "^2.1.0",
+		"style-loader": "^0.17.0",
 		"webpack-node-externals": "^1.2.0"
 	}
 }

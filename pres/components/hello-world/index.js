@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import './styles/hello-world.css';
+import './style/hello-world.css';
 
 export default class HelloWorld extends Component {
     render() {
         return (
-            <div class="hello-world">
+            <div className="hello-world">
                 Hello world :)
             </div>
         );

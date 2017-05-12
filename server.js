@@ -4,7 +4,7 @@ import router from './routes/index';
 let app = express();
 
 app.use('/bin', express.static('./bin'));
-app.use('/stylesheets', express.static('./public/stylesheets'));
+// app.use('/stylesheets', express.static('./public/stylesheets'));
 
 app.use('/', router);
 // app.use('/view/*', router);

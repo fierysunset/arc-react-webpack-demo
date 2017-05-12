@@ -1,9 +1,15 @@
 import express from 'express';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import HelloWorld from '../pres/components/hello-world'
 
 const router = express.Router();
 
 router.get('/', function (req, res) {
-	res.status(200).send(serverRenderedPage('<div>Connie was here?</div>', {
+	const html = ReactDOMServer.renderToString(
+		<HelloWorld/>
+	);
+	res.status(200).send(serverRenderedPage(html, {
 		test: 1
 	}));
 });
@@ -19,7 +25,7 @@ function serverRenderedPage(html, initialState) {
     	<meta http-equiv="x-ua-compatible" content="ie=edge">
     	<title>React Router Redux Express</title>
 		
-    	<link rel="stylesheet" href="../stylesheets/main.css">
+    	<link rel="stylesheet" href="../bin/style.css">
     </head>
     <body>
 

@@ -9554,7 +9554,7 @@ var HelloWorld = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { 'class': 'hello-world' },
+                { className: 'hello-world' },
                 'Hello world :)'
             );
         }
@@ -9577,9 +9577,11 @@ module.exports = __webpack_require__(114);
 
 /***/ }),
 /* 83 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (1:0)\n\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 | \u001b[39m\u001b[33m.\u001b[39mhello\u001b[33m-\u001b[39mworld {\n \u001b[90m   | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 2 | \u001b[39m    color\u001b[33m:\u001b[39m blue\u001b[33m;\u001b[39m\n \u001b[90m 3 | \u001b[39m}\u001b[0m\n");
+"use strict";
+// removed by extract-text-webpack-plugin
+
 
 /***/ }),
 /* 84 */
