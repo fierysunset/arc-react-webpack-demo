@@ -1,9 +1,9 @@
 import webpack from 'webpack';
-var nodeExternals = require('webpack-node-externals');
+import nodeExternals from 'webpack-node-externals';
 import path from 'path'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
 
-module.exports = [
+const getFlaggedConfigs = () => [
     {
         entry: './server.js',
         output: {
@@ -12,52 +12,50 @@ module.exports = [
         },
         module: {
             rules: [{
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-1']
-                }
+                test: /\.js$/,
+                use: 'babel-loader',
+                include: path.join(__dirname, 'src')
             },
             {
                 test: /\.css$/,
-                loaders: ExtractTextPlugin.extract({
+                loaders: ExtractTextWebpackPlugin.extract({
                     use: 'css-loader',
                     fallback: 'style-loader'
                 }),
-                include: path.join(__dirname, 'pres')
+                include: path.join(__dirname, 'src/pres')
             }]
         },
         plugins: [
-            new ExtractTextPlugin('style.css')
+            new ExtractTextWebpackPlugin('style.css')
         ],
         target: 'node',
         externals: [nodeExternals()]
     },
     {
-        entry: './pres/index.js',
+        entry: './src/pres/index.js',
         output: {
             path: __dirname + '/bin',
             filename: 'app.bundle.js',
         },
         module: {
             rules: [{
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-1']
-                }
+                test: /\.js$/,
+                use: 'babel-loader',
+                include: path.join(__dirname, 'src')
             },
             {
                 test: /\.css$/,
-                loaders: ExtractTextPlugin.extract({
+                loaders: ExtractTextWebpackPlugin.extract({
                     use: 'css-loader',
                     fallback: 'style-loader'
                 }),
-                include: path.join(__dirname, 'pres')
+                include: path.join(__dirname, 'src/pres')
             }]
         },
         plugins: [
-            new ExtractTextPlugin('style.css')
+            new ExtractTextWebpackPlugin('style.css')
         ]
     }
 ]
+
+module.exports = getFlaggedConfigs;

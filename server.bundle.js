@@ -101,7 +101,7 @@ var _server = __webpack_require__(6);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _helloWorld = __webpack_require__(4);
+var _helloWorld = __webpack_require__(3);
 
 var _helloWorld2 = _interopRequireDefault(_helloWorld);
 
@@ -127,14 +127,6 @@ exports.default = router;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-// removed by extract-text-webpack-plugin
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -147,7 +139,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(3);
+__webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -183,28 +175,30 @@ var HelloWorld = function (_Component) {
 exports.default = HelloWorld;
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_routes_index__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_routes_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__src_routes_index__);
 
 
-var _express = __webpack_require__(0);
 
-var _express2 = _interopRequireDefault(_express);
+let app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
-var _index = __webpack_require__(2);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = (0, _express2.default)();
-
-app.use('/bin', _express2.default.static('./bin'));
+app.use('/bin', __WEBPACK_IMPORTED_MODULE_0_express___default.a.static('./bin'));
 // app.use('/stylesheets', express.static('./public/stylesheets'));
 
-app.use('/', _index2.default);
+app.use('/', __WEBPACK_IMPORTED_MODULE_1__src_routes_index___default.a);
 // app.use('/view/*', router);
 
 app.listen(3000, function () {
