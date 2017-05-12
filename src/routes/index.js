@@ -25,7 +25,7 @@ function serverRenderedPage(html, initialState) {
     	<meta http-equiv="x-ua-compatible" content="ie=edge">
     	<title>React Router Redux Express</title>
 		
-    	<link rel="stylesheet" href="../bin/style.css">
+    	<link rel="stylesheet" href="../dist/style.css">
     </head>
     <body>
 
@@ -33,7 +33,7 @@ function serverRenderedPage(html, initialState) {
         <script>
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
           </script>
-    	<script src="../bin/app.bundle.js"></script>
+    	<script src="../dist/client.bundle.js"></script>
     </body>
     </html>
     `
