@@ -5,9 +5,8 @@ const basePage = (html, initialState) => {
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no">
-            <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-            <title>React Router Redux Express</title>
+            <title>${initialState.title}</title>
             
             <link rel="stylesheet" href="../STATIC/style.css">
         </head>
@@ -15,7 +14,7 @@ const basePage = (html, initialState) => {
             <div id="main-content">
                 ${html}
             </div>
-            
+
             <script>
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
             </script>

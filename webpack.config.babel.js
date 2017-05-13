@@ -3,7 +3,7 @@ import nodeExternals from 'webpack-node-externals';
 import path from 'path'
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
 
-const getClientConfig = () => ({
+const clientConfig = () => ({
     entry: './src/app-client/index.js',
     output: {
         path: __dirname + '/STATIC',
@@ -29,7 +29,7 @@ const getClientConfig = () => ({
     ]
 });
 
-const getServerConfig = () => ({
+const serverConfig = () => ({
     entry: './server.js',
     output: {
         path: __dirname + '/STATIC',
@@ -57,6 +57,6 @@ const getServerConfig = () => ({
     externals: [nodeExternals()]
 });
 
-const getFlaggedConfigs = () => [getClientConfig(), getServerConfig()];
+const getFlaggedConfigs = () => [clientConfig(), serverConfig()];
 
 module.exports = getFlaggedConfigs;
