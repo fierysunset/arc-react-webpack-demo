@@ -4,9 +4,9 @@ import path from 'path'
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
 
 const getClientConfig = () => ({
-    entry: './src/pres/index.js',
+    entry: './src/app-client/index.js',
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '/STATIC',
         filename: 'client.bundle.js',
     },
     module: {
@@ -21,7 +21,7 @@ const getClientConfig = () => ({
                 use: 'css-loader',
                 fallback: 'style-loader'
             }),
-            include: path.join(__dirname, 'src/pres')
+            include: path.join(__dirname, 'src/components')
         }]
     },
     plugins: [
@@ -32,7 +32,7 @@ const getClientConfig = () => ({
 const getServerConfig = () => ({
     entry: './server.js',
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '/STATIC',
         filename: 'server.bundle.js',
     },
     module: {
@@ -47,7 +47,7 @@ const getServerConfig = () => ({
                 use: 'css-loader',
                 fallback: 'style-loader'
             }),
-            include: path.join(__dirname, 'src/pres')
+            include: path.join(__dirname, 'src/components')
         }]
     },
     plugins: [

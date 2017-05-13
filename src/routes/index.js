@@ -1,7 +1,7 @@
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import HelloWorld from '../pres/components/hello-world'
+import HelloWorld from '../components/hello-world'
 
 const router = express.Router();
 
@@ -19,13 +19,12 @@ function serverRenderedPage(html, initialState) {
     <!DOCTYPE html>
     <html lang="en">
     <head>
-    	<!-- Required meta tags always come first -->
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<meta http-equiv="x-ua-compatible" content="ie=edge">
     	<title>React Router Redux Express</title>
 		
-    	<link rel="stylesheet" href="../dist/style.css">
+    	<link rel="stylesheet" href="../STATIC/style.css">
     </head>
     <body>
 
@@ -33,7 +32,7 @@ function serverRenderedPage(html, initialState) {
         <script>
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
           </script>
-    	<script src="../dist/client.bundle.js"></script>
+    	<script src="../STATIC/client.bundle.js"></script>
     </body>
     </html>
     `
