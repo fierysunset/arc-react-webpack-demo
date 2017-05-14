@@ -15,9 +15,8 @@
 		"ARC",
 		"adaptive",
 		"react",
-		"express",
 		"webpack",
-		"babel"
+		"express"
 	],
 	"author": "conchang",
 	"license": "MIT",

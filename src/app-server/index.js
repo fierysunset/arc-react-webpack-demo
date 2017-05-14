@@ -1,19 +1,12 @@
 import express from 'express';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import HelloWorld from '../components/hello-world';
-import basePage from './base-page.js';
+import router from './router.js';
 
-const router = express.Router();
-const initialState = {
-	title: 'ARC React/Webpack Demo'
-};
+let app = express();
 
-router.get('/', function (req, res) {
-	const html = ReactDOMServer.renderToString(
-		<HelloWorld/>
-	);
-	res.status(200).send(basePage(html, initialState));
+app.use('/STATIC', express.static('./STATIC'));
+
+app.use('/', router);
+
+app.listen(2222, function () {
+	console.log('Listening on port 2222!');
 });
-
-export default router;
