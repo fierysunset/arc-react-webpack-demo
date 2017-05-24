@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import path from 'path'
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
@@ -25,7 +26,8 @@ const clientConfig = () => ({
         }]
     },
     plugins: [
-        new ExtractTextWebpackPlugin('style.css')
+        new ExtractTextWebpackPlugin('style.css'),
+        new HtmlWebpackPlugin()
     ]
 });
 
