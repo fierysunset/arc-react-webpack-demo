@@ -4,7 +4,7 @@
 	"description": "ARC Demo using React and Webpack, with both server and client rendering",
 	"main": "server.bundle.js",
 	"scripts": {
-		"start": "node STATIC/server.bundle.js",
+		"start": "node DIST/server.bundle.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {

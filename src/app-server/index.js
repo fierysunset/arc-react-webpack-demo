@@ -3,7 +3,7 @@ import router from './router.js';
 
 let app = express();
 
-app.use('/STATIC', express.static('./STATIC'));
+app.use('/DIST', express.static('./DIST'));
 
 app.use('/', router);
 

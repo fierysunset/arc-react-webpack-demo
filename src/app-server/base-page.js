@@ -8,7 +8,7 @@ const basePage = (html, initialState) => {
 
             <title>${initialState.title}</title>
             
-            <link rel="stylesheet" href="../STATIC/style.css">
+            <link rel="stylesheet" href="../DIST/style.css">
         </head>
         <body>
             <div id="main-content">
@@ -18,7 +18,7 @@ const basePage = (html, initialState) => {
             <script>
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
             </script>
-            <script src="../STATIC/client.bundle.js"></script>
+            <script src="../DIST/client.bundle.js"></script>
         </body>
     </html>
     `

@@ -6,7 +6,7 @@ import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
 const clientConfig = () => ({
     entry: './src/app-client',
     output: {
-        path: __dirname + '/STATIC',
+        path: __dirname + '/DIST',
         filename: 'client.bundle.js',
     },
     module: {
@@ -32,7 +32,7 @@ const clientConfig = () => ({
 const serverConfig = () => ({
     entry: './src/app-server',
     output: {
-        path: __dirname + '/STATIC',
+        path: __dirname + '/DIST',
         filename: 'server.bundle.js',
     },
     module: {
