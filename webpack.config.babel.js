@@ -8,8 +8,8 @@ import webpack from 'webpack';
 const flagset = [
     [],
     ['mobile'],
-    ['mobile', 'iphone7'],
-    ['mobile', 'iphone7', 'ios'],
+    ['mobile', 'iphone'],
+    ['mobile', 'iphone', 'ios'],
     ['desktop']
 ];
 
@@ -47,13 +47,8 @@ const clientConfig = (...flags) => ({
 
 const serverConfig = (...flags) => ({
     entry: './src/app-server',
-    resolve: {
-        plugins: [
-            new adaptiveImports.adaptFiles(flags)
-        ]
-    },
     output: {
-        path: adaptiveImports.getOutputPath(__dirname, 'DIST', flags),
+        path: __dirname + '/DIST',
         filename: 'server.bundle.js',
     },
     module: {
@@ -83,7 +78,9 @@ let configArr = [];
 
 const getFlaggedConfigs = () => {
     flagset.map(flags => {
+        // Client configs
         configArr.push(clientConfig(...flags));
+        // Server configs
         configArr.push(serverConfig(...flags));
     });
     return configArr;
