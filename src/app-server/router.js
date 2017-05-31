@@ -1,6 +1,7 @@
 import adaptiveImports from '../../../adaptive-imports/webpack';
 import basePage from './base-page.js';
 import express from 'express';
+import fs from 'fs';
 import HelloWorld from '../components/hello-world';
 import MobileDetect from 'mobile-detect';
 import React from 'react';
@@ -29,7 +30,7 @@ const getDeviceInfo = (req) => {
 }
 
 // Create array of flags to pass to adaptive imports module to get output path
-const getAppPath = () => {
+const getFlags = () => {
 	let flags = [];
 	
 	for (let key in deviceInfo) {
@@ -37,15 +38,29 @@ const getAppPath = () => {
 			flags.push(key);
 		}
 	}
-	console.log('FLAGS! ' + flags)
-	console.log(adaptiveImports.getOutputPath(__dirname, 'DIST', flags))
 
-	return adaptiveImports.getOutputPath(__dirname, 'DIST', flags);
+	return flags;
+}
+
+// Get output path based on flags from the user's device info
+const getOutputPath = () => {
+	let outputPath = '';
+	const flags = getFlags();
+
+	outputPath = adaptiveImports.getOutputPath(__dirname, 'DIST', flags);
+	// If folder for that set of flags aren't defined, use default
+	try {
+		const stat = fs.statSync('./' + outputPath);
+	} catch(err) {
+		outputPath = '/DIST/default';
+	}
+
+	return outputPath;
 }
 
 router.get('/', function (req, res) {
 	const deviceInfo = getDeviceInfo(req);
-	initialState.appPath = getAppPath();
+	initialState.outputPath = getOutputPath();
 
 	const html = ReactDOMServer.renderToString(
 		<HelloWorld />
