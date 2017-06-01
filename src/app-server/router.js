@@ -63,7 +63,7 @@ router.get('/', function (req, res) {
 	initialState.outputPath = getOutputPath();
 
 	const html = ReactDOMServer.renderToString(
-		<HelloWorld />
+		<HelloWorld/>
 	);
 	res.status(200).send(basePage(html, initialState));
 });

@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import router from './router.js';
 
 let app = express();
