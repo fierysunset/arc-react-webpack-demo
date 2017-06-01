@@ -1,8 +1,8 @@
 import express from 'express';
+import basePage from './base-page.js';
+import HelloWorld from '../components/hello-world';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import HelloWorld from '../components/hello-world';
-import basePage from './base-page.js';
 
 const router = express.Router();
 const initialState = {
