@@ -11,9 +11,7 @@ const basePage = (html, initialState) => {
             <link rel="stylesheet" href="../DIST/style.css">
         </head>
         <body>
-            <div id="main-content">
-                ${html}
-            </div>
+            <div id="main-content">${html}</div>
 
             <script>
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
