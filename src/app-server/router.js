@@ -1,4 +1,4 @@
-import adaptiveImports from '../../../adaptive-imports/webpack';
+import adaptiveImports from '../../../adaptive-imports';
 import basePage from './base-page.js';
 import express from 'express';
 import fs from 'fs';
@@ -18,13 +18,12 @@ const getDeviceInfo = (req) => {
 	const md = new MobileDetect(req.headers['user-agent']);
 
 	deviceInfo = {
+		desktop: md.phone() === null,
 		mobile: md.phone() !== null,
 		android: md.os() === 'AndroidOS',
 		ios: md.os() === 'iOS',
 		iphone: md.is('iPhone')
 	};
-
-	console.log(JSON.stringify(deviceInfo));
 
 	return deviceInfo;
 }
@@ -47,13 +46,8 @@ const getOutputPath = () => {
 	let outputPath = '';
 	const flags = getFlags();
 
-	outputPath = adaptiveImports.getOutputPath(__dirname, 'DIST', flags);
-	// If folder for that set of flags aren't defined, use default
-	try {
-		const stat = fs.statSync('./' + outputPath);
-	} catch(err) {
-		outputPath = '/DIST/default';
-	}
+	// Use adaptive-imports to find the directory in the same location that matches the most flags
+	outputPath = adaptiveImports.adaptResource('DIST/default', flags);
 
 	return outputPath;
 }

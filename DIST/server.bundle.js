@@ -63,26 +63,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("fs");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("fs");
+module.exports = require("path");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var current = process.versions && process.versions.node && process.versions.node.split('.') || [];
+var current = (process.versions && process.versions.node && process.versions.node.split('.')) || [];
 
 function versionIncluded(version) {
     if (version === '*') return true;
@@ -96,7 +96,7 @@ function versionIncluded(version) {
 var data = __webpack_require__(12);
 
 var core = {};
-for (var version in data) {
+for (var version in data) { // eslint-disable-line no-restricted-syntax
     if (Object.prototype.hasOwnProperty.call(data, version) && versionIncluded(version)) {
         for (var i = 0; i < data[version].length; ++i) {
             core[data[version][i]] = true;
@@ -130,7 +130,7 @@ module.exports = function () {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(0);
+var path = __webpack_require__(1);
 var parse = path.parse || __webpack_require__(9);
 
 module.exports = function nodeModulesPaths(start, opts) {
@@ -141,17 +141,17 @@ module.exports = function nodeModulesPaths(start, opts) {
 
     // ensure that `start` is an absolute path at this point,
     // resolving against the process' current working directory
-    start = path.resolve(start);
+    var absoluteStart = path.resolve(start);
 
     var prefix = '/';
-    if (/^([A-Za-z]:)/.test(start)) {
+    if (/^([A-Za-z]:)/.test(absoluteStart)) {
         prefix = '';
-    } else if (/^\\\\/.test(start)) {
+    } else if (/^\\\\/.test(absoluteStart)) {
         prefix = '\\\\';
     }
 
-    var paths = [start];
-    var parsed = parse(start);
+    var paths = [absoluteStart];
+    var parsed = parse(absoluteStart);
     while (parsed.dir !== paths[paths.length - 1]) {
         paths.push(parsed.dir);
         parsed = parse(parsed.dir);
@@ -178,17 +178,17 @@ module.exports = require("react");
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(__dirname) {
+
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _webpack = __webpack_require__(14);
+var _adaptiveImports = __webpack_require__(8);
 
-var _webpack2 = _interopRequireDefault(_webpack);
+var _adaptiveImports2 = _interopRequireDefault(_adaptiveImports);
 
-var _basePage = __webpack_require__(15);
+var _basePage = __webpack_require__(14);
 
 var _basePage2 = _interopRequireDefault(_basePage);
 
@@ -196,15 +196,15 @@ var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _fs = __webpack_require__(1);
+var _fs = __webpack_require__(0);
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _helloWorld = __webpack_require__(17);
+var _helloWorld = __webpack_require__(16);
 
 var _helloWorld2 = _interopRequireDefault(_helloWorld);
 
-var _mobileDetect = __webpack_require__(19);
+var _mobileDetect = __webpack_require__(18);
 
 var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
 
@@ -212,7 +212,7 @@ var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(20);
+var _server = __webpack_require__(19);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -229,13 +229,12 @@ var getDeviceInfo = function getDeviceInfo(req) {
 	var md = new _mobileDetect2.default(req.headers['user-agent']);
 
 	deviceInfo = {
+		desktop: md.phone() === null,
 		mobile: md.phone() !== null,
 		android: md.os() === 'AndroidOS',
 		ios: md.os() === 'iOS',
 		iphone: md.is('iPhone')
 	};
-
-	console.log(JSON.stringify(deviceInfo));
 
 	return deviceInfo;
 };
@@ -258,13 +257,8 @@ var getOutputPath = function getOutputPath() {
 	var outputPath = '';
 	var flags = getFlags();
 
-	outputPath = _webpack2.default.getOutputPath(__dirname, 'DIST', flags);
-	// If folder for that set of flags aren't defined, use default
-	try {
-		var stat = _fs2.default.statSync('./' + outputPath);
-	} catch (err) {
-		outputPath = '/DIST/default';
-	}
+	// Use adaptive-imports to find the directory in the same location that matches the most flags
+	outputPath = _adaptiveImports2.default.adaptResource('DIST/default', flags);
 
 	return outputPath;
 };
@@ -278,20 +272,19 @@ router.get('/', function (req, res) {
 });
 
 exports.default = router;
-/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fs = __webpack_require__(1);
-var path = __webpack_require__(0);
+var fs = __webpack_require__(0);
+var path = __webpack_require__(1);
 var resolve = __webpack_require__(10);
 var directoryListings = {};
 var fileMatches = {};
 var configs = {};
 
-module.exports.adaptFile = adaptFile;
+module.exports.adaptResource = adaptResource;
 module.exports.joinFlags = joinFlags;
 module.exports.loadAdaptiveConfig = loadAdaptiveConfig;
 module.exports.resolveFrom = resolveFrom;
@@ -383,20 +376,45 @@ function getFileMatches(filepath) {
         throw new Error('No default found for ' + filepath);
     }
 
-    matches.sort((a, b) => (
-        b.flags.length - a.flags.length
-    ));
+    return fileMatches[filepath] = matches;
+}
+
+// Utility function to get directory matches
+function getDirMatches(filepath) {
+    if (fileMatches[filepath]) {
+        return fileMatches[filepath];
+    }
+
+    var parentDir = path.dirname(filepath);
+    var basename = path.basename(filepath);
+    var contents = getDirectoryListing(parentDir);
+    var matches = [];
+
+    contents.forEach(dir => {
+        var fullpath = path.join(parentDir, dir);
+        // We only want to operate on the directories
+        var stat = fs.statSync(fullpath);
+        if (!stat.isDirectory()) return;
+
+        var flags = dir.split('.');
+
+        matches.push({ file: fullpath, flags });
+    });
 
     return fileMatches[filepath] = matches;
 }
 
-function adaptFile(filepath, flags) {
-    var indexedFlags = getIndexedFlags(flags);
-    var matches = getFileMatches(filepath);
+function adaptResource(filepath, flags) {
+    var stat = fs.statSync(filepath);
+    var matches = [];
 
-    return matches.find(match => {
-        return match.flags.every(flag => indexedFlags[flag]);
-    }).file;
+    if (stat.isFile()) {
+        matches = getFileMatches(filepath);
+    } else if (stat.isDirectory()) {
+        matches = getDirMatches(filepath);
+    }
+
+    return getBestMatch(filepath, matches, flags);
 }
 
 function resolveFrom(requestingFile, targetFile, options) {
@@ -412,13 +430,34 @@ function resolveFrom(requestingFile, targetFile, options) {
         return resolvedFile;
     }
 
-    return adaptFile(resolvedFile, flags);
+    return adaptResource(resolvedFile, flags);
 }
 
 // Alphabetize flags before joining them
 function joinFlags(flags) {
     flags.sort();
     return flags.join('.');
+}
+
+// Return best matching filepath 
+function getBestMatch(origFilepath, matches, flags) {
+    var indexedFlags = getIndexedFlags(flags);
+    var bestMatchObj = {};
+    var bestMatchFile = '';
+
+    matches.sort((a, b) => (
+        b.flags.length - a.flags.length
+    ));
+
+    bestMatchObj = matches.find(match => {
+        return match.flags.every(flag => indexedFlags[flag]);
+    });
+
+    if (bestMatchObj) {
+        return bestMatchObj.file;
+    } else {
+        return origFilepath;
+    }
 }
 
 
@@ -527,10 +566,13 @@ module.exports.win32 = win32.parse;
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
-exports = module.exports = __webpack_require__(11);
-exports.core = core;
-exports.isCore = function isCore(x) { return core[x]; };
-exports.sync = __webpack_require__(13);
+var async = __webpack_require__(11);
+async.core = core;
+async.isCore = function isCore(x) { return core[x]; };
+async.sync = __webpack_require__(13);
+
+exports = async;
+module.exports = async;
 
 
 /***/ }),
@@ -538,8 +580,8 @@ exports.sync = __webpack_require__(13);
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
-var fs = __webpack_require__(1);
-var path = __webpack_require__(0);
+var fs = __webpack_require__(0);
+var path = __webpack_require__(1);
 var caller = __webpack_require__(4);
 var nodeModulesPaths = __webpack_require__(5);
 
@@ -551,7 +593,7 @@ module.exports = function resolve(x, options, callback) {
         opts = {};
     }
     if (typeof x !== 'string') {
-        var err = new TypeError('path must be a string');
+        var err = new TypeError('Path must be a string.');
         return process.nextTick(function () {
             cb(err);
         });
@@ -559,9 +601,11 @@ module.exports = function resolve(x, options, callback) {
 
     var isFile = opts.isFile || function (file, cb) {
         fs.stat(file, function (err, stat) {
-            if (err && err.code === 'ENOENT') cb(null, false);
-            else if (err) cb(err);
-            else cb(null, stat.isFile() || stat.isFIFO());
+            if (!err) {
+                return cb(null, stat.isFile() || stat.isFIFO());
+            }
+            if (err.code === 'ENOENT' || err.code === 'ENOTDIR') return cb(null, false);
+            return cb(err);
         });
     };
     var readFile = opts.readFile || fs.readFile;
@@ -571,9 +615,9 @@ module.exports = function resolve(x, options, callback) {
 
     opts.paths = opts.paths || [];
 
-    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[\\\/])/.test(x)) {
+    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(x)) {
         var res = path.resolve(y, x);
-        if (x === '..') res += '/';
+        if (x === '..' || x.slice(-1) === '/') res += '/';
         if (/\/$/.test(x) && res === y) {
             loadAsDirectory(res, opts.package, onfile);
         } else loadAsFile(res, opts.package, onfile);
@@ -602,20 +646,22 @@ module.exports = function resolve(x, options, callback) {
         });
     }
 
-    function loadAsFile(x, pkg, callback) {
+    function loadAsFile(x, thePackage, callback) {
+        var loadAsFilePackage = thePackage;
         var cb = callback;
-        if (typeof pkg === 'function') {
-            cb = pkg;
-            pkg = undefined;
+        if (typeof loadAsFilePackage === 'function') {
+            cb = loadAsFilePackage;
+            loadAsFilePackage = undefined;
         }
 
         var exts = [''].concat(extensions);
-        load(exts, x, pkg);
+        load(exts, x, loadAsFilePackage);
 
-        function load(exts, x, pkg) {
-            if (exts.length === 0) return cb(null, undefined, pkg);
+        function load(exts, x, loadPackage) {
+            if (exts.length === 0) return cb(null, undefined, loadPackage);
             var file = x + exts[0];
 
+            var pkg = loadPackage;
             if (pkg) onpkg(null, pkg);
             else loadpkg(path.dirname(file), onpkg);
 
@@ -635,19 +681,19 @@ module.exports = function resolve(x, options, callback) {
                 isFile(file, onex);
             }
             function onex(err, ex) {
-                if (err) cb(err);
-                else if (!ex) load(exts.slice(1), x, pkg);
-                else cb(null, file, pkg);
+                if (err) return cb(err);
+                if (ex) return cb(null, file, pkg);
+                load(exts.slice(1), x, pkg);
             }
         }
     }
 
     function loadpkg(dir, cb) {
         if (dir === '' || dir === '/') return cb(null);
-        if (process.platform === 'win32' && (/^\w:[\\\/]*$/).test(dir)) {
+        if (process.platform === 'win32' && (/^\w:[/\\]*$/).test(dir)) {
             return cb(null);
         }
-        if (/[\\\/]node_modules[\\\/]*$/.test(dir)) return cb(null);
+        if (/[/\\]node_modules[/\\]*$/.test(dir)) return cb(null);
 
         var pkgfile = path.join(dir, 'package.json');
         isFile(pkgfile, function (err, ex) {
@@ -666,8 +712,9 @@ module.exports = function resolve(x, options, callback) {
         });
     }
 
-    function loadAsDirectory(x, fpkg, callback) {
+    function loadAsDirectory(x, loadAsDirectoryPackage, callback) {
         var cb = callback;
+        var fpkg = loadAsDirectoryPackage;
         if (typeof fpkg === 'function') {
             cb = fpkg;
             fpkg = opts.package;
@@ -794,18 +841,21 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
-var fs = __webpack_require__(1);
-var path = __webpack_require__(0);
+var fs = __webpack_require__(0);
+var path = __webpack_require__(1);
 var caller = __webpack_require__(4);
 var nodeModulesPaths = __webpack_require__(5);
 
 module.exports = function (x, options) {
+    if (typeof x !== 'string') {
+        throw new TypeError('Path must be a string.');
+    }
     var opts = options || {};
     var isFile = opts.isFile || function (file) {
         try {
             var stat = fs.statSync(file);
         } catch (e) {
-            if (e && e.code === 'ENOENT') return false;
+            if (e && (e.code === 'ENOENT' || e.code === 'ENOTDIR')) return false;
             throw e;
         }
         return stat.isFile() || stat.isFIFO();
@@ -817,9 +867,9 @@ module.exports = function (x, options) {
 
     opts.paths = opts.paths || [];
 
-    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[\\\/])/.test(x)) {
+    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(x)) {
         var res = path.resolve(y, x);
-        if (x === '..') res += '/';
+        if (x === '..' || x.slice(-1) === '/') res += '/';
         var m = loadAsFileSync(res) || loadAsDirectorySync(res);
         if (m) return m;
     } else {
@@ -885,49 +935,6 @@ module.exports = function (x, options) {
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(0);
-var adaptiveImports = __webpack_require__(8);
-
-module.exports.adaptFiles = adaptFiles;
-module.exports.getOutputPath = getOutputPath;
-
-/**
- * Get output.path to be used by webpack config
- * 
- * @param {String} dirname - your app's `__dirname`
- * @param {String} outputFolder - name of containing folder for output from webpack config
- * @param {Array} flags - combination of flags (e.g device type, screen size, brand) for one output set
- * 
- * @return {String}
- */
-function getOutputPath(dirname, outputFolder, flags) {
-    return path.join(dirname, outputFolder, (adaptiveImports.joinFlags(flags) || 'default'));
-}
-
-/**
- * Hooks into webpack resolve step to process every path through adaptive imports logic
- * Returns an object with `apply` property following webpack plugin paradigm
- * 
- * @param {Array} flags - combination of flags (e.g device type, screen size, brand) to be processed
- * 
- * @return {Object} 
- */
-function adaptFiles(flags) {
-    return {
-        apply: (resolver) => {
-            resolver.plugin('before-existing-file', (request, callback) => {
-                var adaptedPath = adaptiveImports.adaptFile(request.path, flags);
-                callback(null, Object.assign({}, request, { path: adaptedPath }));
-            });
-        }
-    };
-}
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -941,7 +948,7 @@ var basePage = function basePage(html, initialState) {
 exports.default = basePage;
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -968,7 +975,7 @@ app.listen(2222, function () {
 });
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -984,7 +991,7 @@ var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(18);
+__webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1020,19 +1027,19 @@ var HelloWorld = function (_Component) {
 exports.default = HelloWorld;
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("mobile-detect");
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");

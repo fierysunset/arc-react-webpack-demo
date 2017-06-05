@@ -1,4 +1,4 @@
-import adaptiveImports from '../adaptive-imports/webpack';
+import adaptiveImportsWebpack from '../adaptive-imports/webpack';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
@@ -17,11 +17,11 @@ const clientConfig = (...flags) => ({
     entry: './src/app-client',
     resolve: {
         plugins: [
-            new adaptiveImports.adaptFiles(flags)
+            new adaptiveImportsWebpack.adaptFiles(flags)
         ]
     },
     output: {
-        path: adaptiveImports.getOutputPath(__dirname, 'DIST', flags),
+        path: adaptiveImportsWebpack.getOutputPath(__dirname, 'DIST', flags),
         filename: 'client.bundle.js',
     },
     module: {
