@@ -1,0 +1,4 @@
+{
+    "proxy": "./adaptive-proxy",
+    "default": "desktop"
+}

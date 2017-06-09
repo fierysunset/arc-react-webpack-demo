@@ -4,13 +4,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import path from 'path';
 import webpack from 'webpack';
+import { adaptResource } from '../adaptive-imports';
+
+const res = rel => path.resolve(__dirname, rel);
 
 const flagset = [
-    [],
-    ['mobile'],
-    ['mobile', 'iphone'],
-    ['mobile', 'iphone', 'ios'],
-    ['desktop']
+    ['mobile']
 ];
 
 const clientConfig = (...flags) => ({
@@ -18,7 +17,14 @@ const clientConfig = (...flags) => ({
     resolve: {
         plugins: [
             new adaptiveImportsWebpack.adaptFiles(flags)
-        ]
+        ],
+        modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
+        extensions: ['.js', '.json', '.adaptive']
+    },
+    resolveLoader: {
+        alias: {
+            'minimal-loader': res('../minimal-loader/minimal-loader'),
+        },
     },
     output: {
         path: adaptiveImportsWebpack.getOutputPath(__dirname, 'DIST', flags),
@@ -37,6 +43,10 @@ const clientConfig = (...flags) => ({
                 fallback: 'style-loader'
             }),
             include: path.join(__dirname, 'src/components')
+        },
+        {
+            test: /\.adaptive$/,
+            loader: 'minimal-loader'
         }]
     },
     plugins: [
@@ -47,6 +57,15 @@ const clientConfig = (...flags) => ({
 
 const serverConfig = (...flags) => ({
     entry: './src/app-server',
+    resolve: {
+        modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
+        extensions: ['.js', '.json', '.adaptive']
+    },
+    resolveLoader: {
+        alias: {
+            'minimal-loader': res('../minimal-loader/minimal-loader'),
+        },
+    },
     output: {
         path: __dirname + '/DIST',
         filename: 'server.bundle.js',
@@ -64,6 +83,10 @@ const serverConfig = (...flags) => ({
                 fallback: 'style-loader'
             }),
             include: path.join(__dirname, 'src/components')
+        },
+        {
+            test: /\.adaptive$/,
+            loader: 'minimal-loader'
         }]
     },
     plugins: [

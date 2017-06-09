@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -93,7 +93,7 @@ function versionIncluded(version) {
     return false;
 }
 
-var data = __webpack_require__(12);
+var data = __webpack_require__(11);
 
 var core = {};
 for (var version in data) { // eslint-disable-line no-restricted-syntax
@@ -131,7 +131,7 @@ module.exports = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(1);
-var parse = path.parse || __webpack_require__(9);
+var parse = path.parse || __webpack_require__(8);
 
 module.exports = function nodeModulesPaths(start, opts) {
     var modules = opts && opts.moduleDirectory
@@ -169,12 +169,6 @@ module.exports = function nodeModulesPaths(start, opts) {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -184,11 +178,15 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _adaptiveImports = __webpack_require__(8);
+var _adaptiveImports = __webpack_require__(7);
 
 var _adaptiveImports2 = _interopRequireDefault(_adaptiveImports);
 
-var _basePage = __webpack_require__(14);
+var _appLayout = __webpack_require__(15);
+
+var _appLayout2 = _interopRequireDefault(_appLayout);
+
+var _basePage = __webpack_require__(13);
 
 var _basePage2 = _interopRequireDefault(_basePage);
 
@@ -200,19 +198,15 @@ var _fs = __webpack_require__(0);
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _helloWorld = __webpack_require__(16);
-
-var _helloWorld2 = _interopRequireDefault(_helloWorld);
-
-var _mobileDetect = __webpack_require__(18);
+var _mobileDetect = __webpack_require__(16);
 
 var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
 
-var _react = __webpack_require__(6);
+var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(19);
+var _server = __webpack_require__(18);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -264,22 +258,22 @@ var getOutputPath = function getOutputPath() {
 };
 
 router.get('/', function (req, res) {
-	var deviceInfo = getDeviceInfo(req);
+	initialState.deviceInfo = getDeviceInfo(req);
 	initialState.outputPath = getOutputPath();
 
-	var html = _server2.default.renderToString(_react2.default.createElement(_helloWorld2.default, null));
+	var html = _server2.default.renderToString(_react2.default.createElement(_appLayout2.default, { initialState: initialState }));
 	res.status(200).send((0, _basePage2.default)(html, initialState));
 });
 
 exports.default = router;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fs = __webpack_require__(0);
 var path = __webpack_require__(1);
-var resolve = __webpack_require__(10);
+var resolve = __webpack_require__(9);
 var directoryListings = {};
 var fileMatches = {};
 var configs = {};
@@ -462,7 +456,7 @@ function getBestMatch(origFilepath, matches, flags) {
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -562,21 +556,21 @@ module.exports.win32 = win32.parse;
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
-var async = __webpack_require__(11);
+var async = __webpack_require__(10);
 async.core = core;
 async.isCore = function isCore(x) { return core[x]; };
-async.sync = __webpack_require__(13);
+async.sync = __webpack_require__(12);
 
 exports = async;
 module.exports = async;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
@@ -785,7 +779,7 @@ module.exports = function resolve(x, options, callback) {
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -837,7 +831,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
@@ -932,7 +926,7 @@ module.exports = function (x, options) {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -948,7 +942,7 @@ var basePage = function basePage(html, initialState) {
 exports.default = basePage;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -958,7 +952,7 @@ var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _router = __webpack_require__(7);
+var _router = __webpack_require__(6);
 
 var _router2 = _interopRequireDefault(_router);
 
@@ -975,71 +969,25 @@ app.listen(2222, function () {
 });
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(17);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var HelloWorld = function (_Component) {
-    _inherits(HelloWorld, _Component);
-
-    function HelloWorld() {
-        _classCallCheck(this, HelloWorld);
-
-        return _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).apply(this, arguments));
-    }
-
-    _createClass(HelloWorld, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'hello-world' },
-                'Hello world :)'
-            );
-        }
-    }]);
-
-    return HelloWorld;
-}(_react.Component);
-
-exports.default = HelloWorld;
-
-/***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module parse failed: /Users/conchang/Documents/ebay/git/ADAPTIVE/minimal-loader/minimal-loader.js!/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.adaptive Unexpected token (2:11)\nYou may need an appropriate loader to handle this file type.\n| {\n|     \"proxy\": \"./adaptive-proxy\",\n|     \"default\": \"desktop\"\n| }");
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("mobile-detect");
 
 /***/ }),
-/* 19 */
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");

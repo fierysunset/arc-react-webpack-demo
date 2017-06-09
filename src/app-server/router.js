@@ -1,8 +1,8 @@
 import adaptiveImports from '../../../adaptive-imports';
+import AppLayout from '../components/app-layout';
 import basePage from './base-page.js';
 import express from 'express';
 import fs from 'fs';
-import HelloWorld from '../components/hello-world';
 import MobileDetect from 'mobile-detect';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -53,11 +53,11 @@ const getOutputPath = () => {
 }
 
 router.get('/', function (req, res) {
-	const deviceInfo = getDeviceInfo(req);
+	initialState.deviceInfo = getDeviceInfo(req);
 	initialState.outputPath = getOutputPath();
 
 	const html = ReactDOMServer.renderToString(
-		<HelloWorld/>
+		<AppLayout initialState={initialState}/>
 	);
 	res.status(200).send(basePage(html, initialState));
 });
