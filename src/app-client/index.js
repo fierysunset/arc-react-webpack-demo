@@ -1,13 +1,15 @@
-import HelloWorld from '../components/hello-world'
+import AppLayout from '../components/app-layout';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 class Index extends Component {
     render() {
+        const initialState = window.__INITIAL_STATE__;
+
         return(
-            <HelloWorld/>
+            <AppLayout initialState={initialState}/>
         )
     }
 }
 
-ReactDOM.render(<Index />, document.getElementById('main-content'));
+ReactDOM.render(<Index/>, document.getElementById('main-content'));
