@@ -32,7 +32,7 @@ const clientConfig = (...flags) => ({
         },
         {
             test: /\.css$/,
-            loaders: ExtractTextWebpackPlugin.extract({
+            use: ExtractTextWebpackPlugin.extract({
                 use: 'css-loader',
                 fallback: 'style-loader'
             }),
@@ -59,10 +59,7 @@ const serverConfig = (...flags) => ({
         },
         {
             test: /\.css$/,
-            loaders: ExtractTextWebpackPlugin.extract({
-                use: 'css-loader',
-                fallback: 'style-loader'
-            }),
+            use: 'css-loader/locals?modules',
             include: path.join(__dirname, 'src/components')
         }]
     },
