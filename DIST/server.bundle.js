@@ -1030,7 +1030,9 @@ exports.default = HelloWorld;
 /* 17 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"hello-world": "_3hmyzGJbrtodpwYULOs-S-"
+};
 
 /***/ }),
 /* 18 */
