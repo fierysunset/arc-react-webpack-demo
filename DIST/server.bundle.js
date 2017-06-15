@@ -63,26 +63,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("fs");
+module.exports = require("react");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("fs");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
+module.exports = require("path");
 
 /***/ }),
 /* 3 */
@@ -99,7 +99,7 @@ function versionIncluded(version) {
     return false;
 }
 
-var data = __webpack_require__(12);
+var data = __webpack_require__(14);
 
 var core = {};
 for (var version in data) { // eslint-disable-line no-restricted-syntax
@@ -136,8 +136,8 @@ module.exports = function () {
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(1);
-var parse = path.parse || __webpack_require__(9);
+var path = __webpack_require__(2);
+var parse = path.parse || __webpack_require__(11);
 
 module.exports = function nodeModulesPaths(start, opts) {
     var modules = opts && opts.moduleDirectory
@@ -177,6 +177,83 @@ module.exports = function nodeModulesPaths(start, opts) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+            let config = {
+    "proxy": "./adaptive-proxy",
+    "default": "desktop"
+};
+            let proxy = __webpack_require__(18);
+            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
+            let getBestMatch = __webpack_require__(10).getBestMatch;
+            let matches = [{ exports:__webpack_require__(20), flags:["mobile"]},{ exports:__webpack_require__(19), flags:[]}];
+
+            function requireAdapted(flags) {
+                return getBestMatch(matches, flags).exports;
+            }
+
+            module.exports = proxy(requireAdapted, config);
+        
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(21);
+
+var _appLayout = __webpack_require__(7);
+
+var _appLayout2 = _interopRequireDefault(_appLayout);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HelloWorld = function (_Component) {
+    _inherits(HelloWorld, _Component);
+
+    function HelloWorld() {
+        _classCallCheck(this, HelloWorld);
+
+        return _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).apply(this, arguments));
+    }
+
+    _createClass(HelloWorld, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'hello-world' },
+                'Hello world :)'
+            );
+        }
+    }]);
+
+    return HelloWorld;
+}(_react.Component);
+
+exports.default = HelloWorld;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -186,15 +263,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _adaptiveImports = __webpack_require__(20);
+var _arcResolver = __webpack_require__(22);
 
-var _adaptiveImports2 = _interopRequireDefault(_adaptiveImports);
+var _arcResolver2 = _interopRequireDefault(_arcResolver);
 
-var _appLayout = __webpack_require__(14);
+var _appLayout = __webpack_require__(7);
 
 var _appLayout2 = _interopRequireDefault(_appLayout);
 
-var _basePage = __webpack_require__(15);
+var _basePage = __webpack_require__(16);
 
 var _basePage2 = _interopRequireDefault(_basePage);
 
@@ -202,19 +279,19 @@ var _express = __webpack_require__(4);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _fs = __webpack_require__(0);
+var _fs = __webpack_require__(1);
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _mobileDetect = __webpack_require__(21);
+var _mobileDetect = __webpack_require__(23);
 
 var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(22);
+var _server = __webpack_require__(24);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -247,7 +324,7 @@ var getDeviceInfo = function getDeviceInfo(req) {
 	return deviceInfo;
 };
 
-// Create array of flags to pass to adaptive imports module to get output path
+// Create array of flags to pass to arc resolver module to get output path
 var getFlags = function getFlags() {
 	var flags = [];
 
@@ -265,8 +342,8 @@ var getOutputPath = function getOutputPath() {
 	var outputPath = '';
 	var flags = getFlags();
 
-	// Use adaptive-imports to find the directory in the same location that matches the most flags
-	outputPath = _adaptiveImports2.default.adaptResource('DIST/default', flags);
+	// Use arc-resolver to find the directory in the same location that matches the most flags
+	outputPath = _arcResolver2.default.adaptResource('DIST/default', flags);
 
 	return outputPath;
 };
@@ -316,12 +393,12 @@ router.get('/', function (req, res) {
 exports.default = router;
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fs = __webpack_require__(0);
-var path = __webpack_require__(1);
-var resolve = __webpack_require__(10);
+var fs = __webpack_require__(1);
+var path = __webpack_require__(2);
+var resolve = __webpack_require__(12);
 var directoryListings = {};
 var fileMatches = {};
 var configs = {};
@@ -509,7 +586,7 @@ function getBestMatch(matches, flags) {
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -609,26 +686,26 @@ module.exports.win32 = win32.parse;
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(3);
-var async = __webpack_require__(11);
+var async = __webpack_require__(13);
 async.core = core;
 async.isCore = function isCore(x) { return core[x]; };
-async.sync = __webpack_require__(13);
+async.sync = __webpack_require__(15);
 
 exports = async;
 module.exports = async;
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(3);
-var fs = __webpack_require__(0);
-var path = __webpack_require__(1);
+var fs = __webpack_require__(1);
+var path = __webpack_require__(2);
 var caller = __webpack_require__(5);
 var nodeModulesPaths = __webpack_require__(6);
 
@@ -832,7 +909,7 @@ module.exports = function resolve(x, options, callback) {
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -884,12 +961,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(3);
-var fs = __webpack_require__(0);
-var path = __webpack_require__(1);
+var fs = __webpack_require__(1);
+var path = __webpack_require__(2);
 var caller = __webpack_require__(5);
 var nodeModulesPaths = __webpack_require__(6);
 
@@ -979,28 +1056,7 @@ module.exports = function (x, options) {
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-            let config = {
-    "proxy": "./adaptive-proxy",
-    "default": "desktop"
-};
-            let proxy = __webpack_require__(17);
-            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
-            let getBestMatch = __webpack_require__(8).getBestMatch;
-            let matches = [{ exports:__webpack_require__(19), flags:["mobile"]},{ exports:__webpack_require__(18), flags:[]}];
-
-            function requireAdapted(flags) {
-                return getBestMatch(matches, flags).exports;
-            }
-
-            module.exports = proxy(requireAdapted, config);
-        
-
-/***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1016,7 +1072,7 @@ var basePage = function basePage(html, initialState) {
 exports.default = basePage;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1026,7 +1082,7 @@ var _express = __webpack_require__(4);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _router = __webpack_require__(7);
+var _router = __webpack_require__(9);
 
 var _router2 = _interopRequireDefault(_router);
 
@@ -1043,13 +1099,13 @@ app.listen(2222, function () {
 });
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var React = __webpack_require__(2);
+var React = __webpack_require__(0);
 
 function getDefault(obj) {
     return obj && obj.__esModule ? obj.default : obj;
@@ -1070,7 +1126,7 @@ module.exports = function (requireAdapted, config) {
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1082,9 +1138,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _helloWorld = __webpack_require__(8);
+
+var _helloWorld2 = _interopRequireDefault(_helloWorld);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1104,12 +1164,13 @@ var DesktopLayout = function (_Component) {
     }
 
     _createClass(DesktopLayout, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "hello-world" },
-                "Hello world - desktop :)"
+                'div',
+                { className: 'app-layout' },
+                'This is the DESKTOP version of app-layout!',
+                _react2.default.createElement(_helloWorld2.default, null)
             );
         }
     }]);
@@ -1120,7 +1181,7 @@ var DesktopLayout = function (_Component) {
 exports.default = DesktopLayout;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1132,9 +1193,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _helloWorld = __webpack_require__(8);
+
+var _helloWorld2 = _interopRequireDefault(_helloWorld);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1154,12 +1219,13 @@ var MobileLayout = function (_Component) {
     }
 
     _createClass(MobileLayout, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "hello-world" },
-                "Hello world - mobile :)"
+                'div',
+                { className: 'app-layout' },
+                'This is the MOBILE version of app-layout!',
+                _react2.default.createElement(_helloWorld2.default, null)
             );
         }
     }]);
@@ -1170,19 +1236,25 @@ var MobileLayout = function (_Component) {
 exports.default = MobileLayout;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
-module.exports = require("adaptive-imports");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 21 */
+/* 22 */
+/***/ (function(module, exports) {
+
+module.exports = require("arc-resolver");
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("mobile-detect");
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");

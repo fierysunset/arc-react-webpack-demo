@@ -7,7 +7,6 @@ export default class HelloWorld extends Component {
         return (
             <div className="hello-world">
                 Hello world :)
-                <AppLayout/>
             </div>
         );
     }

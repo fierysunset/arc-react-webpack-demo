@@ -1,5 +1,4 @@
-import 'adaptive-imports';
-import adaptiveImportsWebpack from 'adaptive-imports/webpack';
+import arcWebpack from 'arc-webpack';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
@@ -19,13 +18,13 @@ const clientConfig = (...flags) => ({
     entry: './src/app-client',
     resolve: {
         plugins: [
-            new adaptiveImportsWebpack.adaptFiles(flags)
+            new arcWebpack.adaptFiles(flags)
         ],
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
         extensions: ['.js', '.json', '.adaptive']
     },
     output: {
-        path: adaptiveImportsWebpack.getOutputPath(__dirname, 'DIST', flags),
+        path: arcWebpack.getOutputPath(__dirname, 'DIST', flags),
         filename: 'client.bundle.js',
     },
     module: {
@@ -75,7 +74,7 @@ const serverConfig = (...flags) => ({
         },
         {
             test: /\.adaptive$/,
-            loader: 'adaptive-imports/webpack/proxy-loader',
+            loader: 'arc-webpack/proxy-loader',
             include: path.join(__dirname, 'src/components')
         }]
     },
