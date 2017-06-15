@@ -1,13 +1,12 @@
+import 'adaptive-imports';
 import adaptiveImportsWebpack from 'adaptive-imports/webpack';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import path from 'path';
 import webpack from 'webpack';
-import { adaptResource } from '../adaptive-imports';
 
-const res = rel => path.resolve(__dirname, rel);
-
+// Any potential combinations of flagsets your app may specialize for
 const flagset = [
     [],
     ['mobile'],
@@ -32,7 +31,7 @@ const clientConfig = (...flags) => ({
     module: {
         rules: [{
             test: /\.js$/,
-            use: 'babel-loader',
+            loader: 'babel-loader',
             include: path.join(__dirname, 'src')
         },
         {
@@ -63,7 +62,7 @@ const serverConfig = (...flags) => ({
     module: {
         rules: [{
             test: /\.js$/,
-            use: 'babel-loader',
+            loader: 'babel-loader',
             include: path.join(__dirname, 'src')
         },
         {
@@ -76,7 +75,8 @@ const serverConfig = (...flags) => ({
         },
         {
             test: /\.adaptive$/,
-            loader: 'adaptive-imports/webpack/proxy-loader'
+            loader: 'adaptive-imports/webpack/proxy-loader',
+            include: path.join(__dirname, 'src/components')
         }]
     },
     plugins: [

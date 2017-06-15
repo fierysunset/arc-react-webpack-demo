@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -88,10 +88,28 @@ module.exports = require("react");
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(11).reduce(function (acc, x) {
-    acc[x] = true;
-    return acc;
-}, {});
+var current = (process.versions && process.versions.node && process.versions.node.split('.')) || [];
+
+function versionIncluded(version) {
+    if (version === '*') return true;
+    var versionParts = version.split('.');
+    for (var i = 0; i < 3; ++i) {
+        if ((current[i] || 0) >= (versionParts[i] || 0)) return true;
+    }
+    return false;
+}
+
+var data = __webpack_require__(12);
+
+var core = {};
+for (var version in data) { // eslint-disable-line no-restricted-syntax
+    if (Object.prototype.hasOwnProperty.call(data, version) && versionIncluded(version)) {
+        for (var i = 0; i < data[version].length; ++i) {
+            core[data[version][i]] = true;
+        }
+    }
+}
+module.exports = core;
 
 
 /***/ }),
@@ -107,7 +125,7 @@ module.exports = require("express");
 module.exports = function () {
     // see https://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
     var origPrepareStackTrace = Error.prepareStackTrace;
-    Error.prepareStackTrace = function (_, stack) { return stack };
+    Error.prepareStackTrace = function (_, stack) { return stack; };
     var stack = (new Error()).stack;
     Error.prepareStackTrace = origPrepareStackTrace;
     return stack[2].getFileName();
@@ -119,43 +137,40 @@ module.exports = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(1);
+var parse = path.parse || __webpack_require__(9);
 
-module.exports = function (start, opts) {
-    var modules = opts.moduleDirectory
+module.exports = function nodeModulesPaths(start, opts) {
+    var modules = opts && opts.moduleDirectory
         ? [].concat(opts.moduleDirectory)
         : ['node_modules']
     ;
 
     // ensure that `start` is an absolute path at this point,
     // resolving against the process' current working directory
-    start = path.resolve(start);
+    var absoluteStart = path.resolve(start);
 
     var prefix = '/';
-    if (/^([A-Za-z]:)/.test(start)) {
+    if (/^([A-Za-z]:)/.test(absoluteStart)) {
         prefix = '';
-    } else if (/^\\\\/.test(start)) {
+    } else if (/^\\\\/.test(absoluteStart)) {
         prefix = '\\\\';
     }
 
-    var splitRe = process.platform === 'win32' ? /[\/\\]/ : /\/+/;
+    var paths = [absoluteStart];
+    var parsed = parse(absoluteStart);
+    while (parsed.dir !== paths[paths.length - 1]) {
+        paths.push(parsed.dir);
+        parsed = parse(parsed.dir);
+    }
 
-    var parts = start.split(splitRe);
-
-    var dirs = [];
-    for (var i = parts.length - 1; i >= 0; i--) {
-        if (modules.indexOf(parts[i]) !== -1) continue;
-        dirs = dirs.concat(modules.map(function(module_dir) {
-            return prefix + path.join(
-                path.join.apply(path, parts.slice(0, i + 1)),
-                module_dir
-            );
+    var dirs = paths.reduce(function (dirs, aPath) {
+        return dirs.concat(modules.map(function (moduleDir) {
+            return path.join(prefix, aPath, moduleDir);
         }));
-    }
-    if (process.platform === 'win32'){
-        dirs[dirs.length-1] = dirs[dirs.length-1].replace(":", ":\\");
-    }
-    return dirs.concat(opts.paths);
-}
+    }, []);
+
+    return opts && opts.paths ? dirs.concat(opts.paths) : dirs;
+};
 
 
 /***/ }),
@@ -171,15 +186,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _adaptiveImports = __webpack_require__(19);
+var _adaptiveImports = __webpack_require__(20);
 
 var _adaptiveImports2 = _interopRequireDefault(_adaptiveImports);
 
-var _appLayout = __webpack_require__(13);
+var _appLayout = __webpack_require__(14);
 
 var _appLayout2 = _interopRequireDefault(_appLayout);
 
-var _basePage = __webpack_require__(14);
+var _basePage = __webpack_require__(15);
 
 var _basePage2 = _interopRequireDefault(_basePage);
 
@@ -191,7 +206,7 @@ var _fs = __webpack_require__(0);
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _mobileDetect = __webpack_require__(20);
+var _mobileDetect = __webpack_require__(21);
 
 var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
 
@@ -199,7 +214,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(21);
+var _server = __webpack_require__(22);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -306,7 +321,7 @@ exports.default = router;
 
 var fs = __webpack_require__(0);
 var path = __webpack_require__(1);
-var resolve = __webpack_require__(9);
+var resolve = __webpack_require__(10);
 var directoryListings = {};
 var fileMatches = {};
 var configs = {};
@@ -497,11 +512,100 @@ function getBestMatch(matches, flags) {
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(3);
-exports = module.exports = __webpack_require__(10);
-exports.core = core;
-exports.isCore = function (x) { return core[x] };
-exports.sync = __webpack_require__(12);
+"use strict";
+
+
+var isWindows = process.platform === 'win32';
+
+// Regex to split a windows path into three parts: [*, device, slash,
+// tail] windows-only
+var splitDeviceRe =
+    /^([a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?([\\\/])?([\s\S]*?)$/;
+
+// Regex to split the tail part of the above into [*, dir, basename, ext]
+var splitTailRe =
+    /^([\s\S]*?)((?:\.{1,2}|[^\\\/]+?|)(\.[^.\/\\]*|))(?:[\\\/]*)$/;
+
+var win32 = {};
+
+// Function to split a filename into [root, dir, basename, ext]
+function win32SplitPath(filename) {
+  // Separate device+slash from tail
+  var result = splitDeviceRe.exec(filename),
+      device = (result[1] || '') + (result[2] || ''),
+      tail = result[3] || '';
+  // Split the tail into dir, basename and extension
+  var result2 = splitTailRe.exec(tail),
+      dir = result2[1],
+      basename = result2[2],
+      ext = result2[3];
+  return [device, dir, basename, ext];
+}
+
+win32.parse = function(pathString) {
+  if (typeof pathString !== 'string') {
+    throw new TypeError(
+        "Parameter 'pathString' must be a string, not " + typeof pathString
+    );
+  }
+  var allParts = win32SplitPath(pathString);
+  if (!allParts || allParts.length !== 4) {
+    throw new TypeError("Invalid path '" + pathString + "'");
+  }
+  return {
+    root: allParts[0],
+    dir: allParts[0] + allParts[1].slice(0, -1),
+    base: allParts[2],
+    ext: allParts[3],
+    name: allParts[2].slice(0, allParts[2].length - allParts[3].length)
+  };
+};
+
+
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var posix = {};
+
+
+function posixSplitPath(filename) {
+  return splitPathRe.exec(filename).slice(1);
+}
+
+
+posix.parse = function(pathString) {
+  if (typeof pathString !== 'string') {
+    throw new TypeError(
+        "Parameter 'pathString' must be a string, not " + typeof pathString
+    );
+  }
+  var allParts = posixSplitPath(pathString);
+  if (!allParts || allParts.length !== 4) {
+    throw new TypeError("Invalid path '" + pathString + "'");
+  }
+  allParts[1] = allParts[1] || '';
+  allParts[2] = allParts[2] || '';
+  allParts[3] = allParts[3] || '';
+
+  return {
+    root: allParts[0],
+    dir: allParts[0] + allParts[1].slice(0, -1),
+    base: allParts[2],
+    ext: allParts[3],
+    name: allParts[2].slice(0, allParts[2].length - allParts[3].length)
+  };
+};
+
+
+if (isWindows)
+  module.exports = win32.parse;
+else /* posix */
+  module.exports = posix.parse;
+
+module.exports.posix = posix.parse;
+module.exports.win32 = win32.parse;
 
 
 /***/ }),
@@ -509,82 +613,108 @@ exports.sync = __webpack_require__(12);
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(3);
+var async = __webpack_require__(11);
+async.core = core;
+async.isCore = function isCore(x) { return core[x]; };
+async.sync = __webpack_require__(13);
+
+exports = async;
+module.exports = async;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(3);
 var fs = __webpack_require__(0);
 var path = __webpack_require__(1);
 var caller = __webpack_require__(5);
 var nodeModulesPaths = __webpack_require__(6);
-var splitRe = process.platform === 'win32' ? /[\/\\]/ : /\//;
 
-module.exports = function resolve (x, opts, cb) {
+module.exports = function resolve(x, options, callback) {
+    var cb = callback;
+    var opts = options || {};
     if (typeof opts === 'function') {
         cb = opts;
         opts = {};
     }
-    if (!opts) opts = {};
     if (typeof x !== 'string') {
+        var err = new TypeError('Path must be a string.');
         return process.nextTick(function () {
-            cb(new Error('path must be a string'));
+            cb(err);
         });
     }
-    
+
     var isFile = opts.isFile || function (file, cb) {
         fs.stat(file, function (err, stat) {
-            if (err && err.code === 'ENOENT') cb(null, false)
-            else if (err) cb(err)
-            else cb(null, stat.isFile() || stat.isFIFO())
+            if (!err) {
+                return cb(null, stat.isFile() || stat.isFIFO());
+            }
+            if (err.code === 'ENOENT' || err.code === 'ENOTDIR') return cb(null, false);
+            return cb(err);
         });
     };
     var readFile = opts.readFile || fs.readFile;
-    
-    var extensions = opts.extensions || [ '.js' ];
+
+    var extensions = opts.extensions || ['.js'];
     var y = opts.basedir || path.dirname(caller());
-    
+
     opts.paths = opts.paths || [];
-    
-    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[\\\/])/.test(x)) {
+
+    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(x)) {
         var res = path.resolve(y, x);
-        if (x === '..') res += '/';
+        if (x === '..' || x.slice(-1) === '/') res += '/';
         if (/\/$/.test(x) && res === y) {
             loadAsDirectory(res, opts.package, onfile);
-        }
-        else loadAsFile(res, opts.package, onfile);
-    }
-    else loadNodeModules(x, y, function (err, n, pkg) {
-        if (err) cb(err)
-        else if (n) cb(null, n, pkg)
+        } else loadAsFile(res, opts.package, onfile);
+    } else loadNodeModules(x, y, function (err, n, pkg) {
+        if (err) cb(err);
+        else if (n) cb(null, n, pkg);
         else if (core[x]) return cb(null, x);
-        else cb(new Error("Cannot find module '" + x + "' from '" + y + "'"))
-    });
-    
-    function onfile (err, m, pkg) {
-        if (err) cb(err)
-        else if (m) cb(null, m, pkg)
-        else loadAsDirectory(res, function (err, d, pkg) {
-            if (err) cb(err)
-            else if (d) cb(null, d, pkg)
-            else cb(new Error("Cannot find module '" + x + "' from '" + y + "'"))
-        })
-    }
-    
-    function loadAsFile (x, pkg, cb) {
-        if (typeof pkg === 'function') {
-            cb = pkg;
-            pkg = undefined;
+        else {
+            var moduleError = new Error("Cannot find module '" + x + "' from '" + y + "'");
+            moduleError.code = 'MODULE_NOT_FOUND';
+            cb(moduleError);
         }
-        
+    });
+
+    function onfile(err, m, pkg) {
+        if (err) cb(err);
+        else if (m) cb(null, m, pkg);
+        else loadAsDirectory(res, function (err, d, pkg) {
+            if (err) cb(err);
+            else if (d) cb(null, d, pkg);
+            else {
+                var moduleError = new Error("Cannot find module '" + x + "' from '" + y + "'");
+                moduleError.code = 'MODULE_NOT_FOUND';
+                cb(moduleError);
+            }
+        });
+    }
+
+    function loadAsFile(x, thePackage, callback) {
+        var loadAsFilePackage = thePackage;
+        var cb = callback;
+        if (typeof loadAsFilePackage === 'function') {
+            cb = loadAsFilePackage;
+            loadAsFilePackage = undefined;
+        }
+
         var exts = [''].concat(extensions);
-        load(exts, x, pkg)
-		
-		function load (exts, x, pkg) {
-            if (exts.length === 0) return cb(null, undefined, pkg);
+        load(exts, x, loadAsFilePackage);
+
+        function load(exts, x, loadPackage) {
+            if (exts.length === 0) return cb(null, undefined, loadPackage);
             var file = x + exts[0];
-            
-            if (pkg) onpkg(null, pkg)
+
+            var pkg = loadPackage;
+            if (pkg) onpkg(null, pkg);
             else loadpkg(path.dirname(file), onpkg);
-            
-            function onpkg (err, pkg_, dir) {
+
+            function onpkg(err, pkg_, dir) {
                 pkg = pkg_;
-                if (err) return cb(err)
+                if (err) return cb(err);
                 if (dir && pkg && opts.pathFilter) {
                     var rfile = path.relative(dir, file);
                     var rel = rfile.slice(0, rfile.length - exts[0].length);
@@ -597,33 +727,30 @@ module.exports = function resolve (x, opts, cb) {
                 }
                 isFile(file, onex);
             }
-            function onex (err, ex) {
-                if (err) cb(err)
-                else if (!ex) load(exts.slice(1), x, pkg)
-                else cb(null, file, pkg)
+            function onex(err, ex) {
+                if (err) return cb(err);
+                if (ex) return cb(null, file, pkg);
+                load(exts.slice(1), x, pkg);
             }
         }
     }
-    
-    function loadpkg (dir, cb) {
+
+    function loadpkg(dir, cb) {
         if (dir === '' || dir === '/') return cb(null);
-        if (process.platform === 'win32' && /^\w:[\\\/]*$/.test(dir)) {
+        if (process.platform === 'win32' && (/^\w:[/\\]*$/).test(dir)) {
             return cb(null);
         }
-        if (/[\\\/]node_modules[\\\/]*$/.test(dir)) return cb(null);
-        
+        if (/[/\\]node_modules[/\\]*$/.test(dir)) return cb(null);
+
         var pkgfile = path.join(dir, 'package.json');
         isFile(pkgfile, function (err, ex) {
             // on err, ex is false
-            if (!ex) return loadpkg(
-                path.dirname(dir), cb
-            );
-            
+            if (!ex) return loadpkg(path.dirname(dir), cb);
+
             readFile(pkgfile, function (err, body) {
                 if (err) cb(err);
-                try { var pkg = JSON.parse(body) }
-                catch (err) {}
-                
+                try { var pkg = JSON.parse(body); } catch (jsonErr) {}
+
                 if (pkg && opts.packageFilter) {
                     pkg = opts.packageFilter(pkg, pkgfile);
                 }
@@ -631,122 +758,133 @@ module.exports = function resolve (x, opts, cb) {
             });
         });
     }
-    
-    function loadAsDirectory (x, fpkg, cb) {
+
+    function loadAsDirectory(x, loadAsDirectoryPackage, callback) {
+        var cb = callback;
+        var fpkg = loadAsDirectoryPackage;
         if (typeof fpkg === 'function') {
             cb = fpkg;
             fpkg = opts.package;
         }
-        
-        var pkgfile = path.join(x, '/package.json');
+
+        var pkgfile = path.join(x, 'package.json');
         isFile(pkgfile, function (err, ex) {
             if (err) return cb(err);
-            if (!ex) return loadAsFile(path.join(x, '/index'), fpkg, cb);
-            
+            if (!ex) return loadAsFile(path.join(x, 'index'), fpkg, cb);
+
             readFile(pkgfile, function (err, body) {
                 if (err) return cb(err);
                 try {
                     var pkg = JSON.parse(body);
-                }
-                catch (err) {}
-                
+                } catch (jsonErr) {}
+
                 if (opts.packageFilter) {
                     pkg = opts.packageFilter(pkg, pkgfile);
                 }
-                
+
                 if (pkg.main) {
-                    if (pkg.main === '.' || pkg.main === './'){
-                        pkg.main = 'index'
+                    if (pkg.main === '.' || pkg.main === './') {
+                        pkg.main = 'index';
                     }
                     loadAsFile(path.resolve(x, pkg.main), pkg, function (err, m, pkg) {
                         if (err) return cb(err);
                         if (m) return cb(null, m, pkg);
-                        if (!pkg) return loadAsFile(path.join(x, '/index'), pkg, cb);
+                        if (!pkg) return loadAsFile(path.join(x, 'index'), pkg, cb);
 
                         var dir = path.resolve(x, pkg.main);
                         loadAsDirectory(dir, pkg, function (err, n, pkg) {
                             if (err) return cb(err);
                             if (n) return cb(null, n, pkg);
-                            loadAsFile(path.join(x, '/index'), pkg, cb);
+                            loadAsFile(path.join(x, 'index'), pkg, cb);
                         });
                     });
                     return;
                 }
-                
+
                 loadAsFile(path.join(x, '/index'), pkg, cb);
             });
         });
     }
-    
-    function loadNodeModules (x, start, cb) {
-        (function process (dirs) {
-            if (dirs.length === 0) return cb(null, undefined);
-            var dir = dirs[0];
-            
-            var file = path.join(dir, '/', x);
-            loadAsFile(file, undefined, onfile);
-            
-            function onfile (err, m, pkg) {
-                if (err) return cb(err);
-                if (m) return cb(null, m, pkg);
-                loadAsDirectory(path.join(dir, '/', x), undefined, ondir);
-            }
-            
-            function ondir (err, n, pkg) {
-                if (err) return cb(err);
-                if (n) return cb(null, n, pkg);
-                process(dirs.slice(1));
-            }
-        })(nodeModulesPaths(start, opts));
+
+    function processDirs(cb, dirs) {
+        if (dirs.length === 0) return cb(null, undefined);
+        var dir = dirs[0];
+
+        var file = path.join(dir, x);
+        loadAsFile(file, undefined, onfile);
+
+        function onfile(err, m, pkg) {
+            if (err) return cb(err);
+            if (m) return cb(null, m, pkg);
+            loadAsDirectory(path.join(dir, x), undefined, ondir);
+        }
+
+        function ondir(err, n, pkg) {
+            if (err) return cb(err);
+            if (n) return cb(null, n, pkg);
+            processDirs(cb, dirs.slice(1));
+        }
+    }
+    function loadNodeModules(x, start, cb) {
+        processDirs(cb, nodeModulesPaths(start, opts));
     }
 };
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
-module.exports = [
-	"assert",
-	"buffer_ieee754",
-	"buffer",
-	"child_process",
-	"cluster",
-	"console",
-	"constants",
-	"crypto",
-	"_debugger",
-	"dgram",
-	"dns",
-	"domain",
-	"events",
-	"freelist",
-	"fs",
-	"http",
-	"https",
-	"_linklist",
-	"module",
-	"net",
-	"os",
-	"path",
-	"punycode",
-	"querystring",
-	"readline",
-	"repl",
-	"stream",
-	"string_decoder",
-	"sys",
-	"timers",
-	"tls",
-	"tty",
-	"url",
-	"util",
-	"vm",
-	"zlib"
-];
+module.exports = {
+	"*": [
+		"assert",
+		"buffer_ieee754",
+		"buffer",
+		"child_process",
+		"cluster",
+		"console",
+		"constants",
+		"crypto",
+		"_debugger",
+		"dgram",
+		"dns",
+		"domain",
+		"events",
+		"freelist",
+		"fs",
+		"http",
+		"https",
+		"_linklist",
+		"module",
+		"net",
+		"os",
+		"path",
+		"punycode",
+		"querystring",
+		"readline",
+		"repl",
+		"stream",
+		"string_decoder",
+		"sys",
+		"timers",
+		"tls",
+		"tty",
+		"url",
+		"util",
+		"vm",
+		"zlib"
+	],
+	"0.11": [
+		"_http_server"
+	],
+	"1.0": [
+		"process",
+		"v8"
+	]
+};
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(3);
@@ -755,39 +893,48 @@ var path = __webpack_require__(1);
 var caller = __webpack_require__(5);
 var nodeModulesPaths = __webpack_require__(6);
 
-module.exports = function (x, opts) {
-    if (!opts) opts = {};
+module.exports = function (x, options) {
+    if (typeof x !== 'string') {
+        throw new TypeError('Path must be a string.');
+    }
+    var opts = options || {};
     var isFile = opts.isFile || function (file) {
-        try { var stat = fs.statSync(file) }
-        catch (err) { if (err && err.code === 'ENOENT') return false }
+        try {
+            var stat = fs.statSync(file);
+        } catch (e) {
+            if (e && (e.code === 'ENOENT' || e.code === 'ENOTDIR')) return false;
+            throw e;
+        }
         return stat.isFile() || stat.isFIFO();
     };
     var readFileSync = opts.readFileSync || fs.readFileSync;
-    
-    var extensions = opts.extensions || [ '.js' ];
+
+    var extensions = opts.extensions || ['.js'];
     var y = opts.basedir || path.dirname(caller());
 
     opts.paths = opts.paths || [];
 
-    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[\\\/])/.test(x)) {
+    if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(x)) {
         var res = path.resolve(y, x);
-        if (x === '..') res += '/';
+        if (x === '..' || x.slice(-1) === '/') res += '/';
         var m = loadAsFileSync(res) || loadAsDirectorySync(res);
         if (m) return m;
     } else {
         var n = loadNodeModulesSync(x, y);
         if (n) return n;
     }
-    
+
     if (core[x]) return x;
-    
-    throw new Error("Cannot find module '" + x + "' from '" + y + "'");
-    
-    function loadAsFileSync (x) {
+
+    var err = new Error("Cannot find module '" + x + "' from '" + y + "'");
+    err.code = 'MODULE_NOT_FOUND';
+    throw err;
+
+    function loadAsFileSync(x) {
         if (isFile(x)) {
             return x;
         }
-        
+
         for (var i = 0; i < extensions.length; i++) {
             var file = x + extensions[i];
             if (isFile(file)) {
@@ -795,8 +942,8 @@ module.exports = function (x, opts) {
             }
         }
     }
-    
-    function loadAsDirectorySync (x) {
+
+    function loadAsDirectorySync(x) {
         var pkgfile = path.join(x, '/package.json');
         if (isFile(pkgfile)) {
             var body = readFileSync(pkgfile, 'utf8');
@@ -805,27 +952,26 @@ module.exports = function (x, opts) {
                 if (opts.packageFilter) {
                     pkg = opts.packageFilter(pkg, x);
                 }
-                
+
                 if (pkg.main) {
                     var m = loadAsFileSync(path.resolve(x, pkg.main));
                     if (m) return m;
                     var n = loadAsDirectorySync(path.resolve(x, pkg.main));
                     if (n) return n;
                 }
-            }
-            catch (err) {}
+            } catch (e) {}
         }
-        
-        return loadAsFileSync(path.join( x, '/index'));
+
+        return loadAsFileSync(path.join(x, '/index'));
     }
-    
-    function loadNodeModulesSync (x, start) {
+
+    function loadNodeModulesSync(x, start) {
         var dirs = nodeModulesPaths(start, opts);
         for (var i = 0; i < dirs.length; i++) {
             var dir = dirs[i];
-            var m = loadAsFileSync(path.join( dir, '/', x));
+            var m = loadAsFileSync(path.join(dir, '/', x));
             if (m) return m;
-            var n = loadAsDirectorySync(path.join( dir, '/', x ));
+            var n = loadAsDirectorySync(path.join(dir, '/', x));
             if (n) return n;
         }
     }
@@ -833,7 +979,7 @@ module.exports = function (x, opts) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -841,10 +987,10 @@ module.exports = function (x, opts) {
     "proxy": "./adaptive-proxy",
     "default": "desktop"
 };
-            let proxy = __webpack_require__(16);
-            let resourcePath = '/Users/mirawlings/code/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
+            let proxy = __webpack_require__(17);
+            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
             let getBestMatch = __webpack_require__(8).getBestMatch;
-            let matches = [{ exports:__webpack_require__(18), flags:["mobile"]},{ exports:__webpack_require__(17), flags:[]}];
+            let matches = [{ exports:__webpack_require__(19), flags:["mobile"]},{ exports:__webpack_require__(18), flags:[]}];
 
             function requireAdapted(flags) {
                 return getBestMatch(matches, flags).exports;
@@ -854,7 +1000,7 @@ module.exports = function (x, opts) {
         
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -870,7 +1016,7 @@ var basePage = function basePage(html, initialState) {
 exports.default = basePage;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -897,7 +1043,7 @@ app.listen(2222, function () {
 });
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -924,7 +1070,7 @@ module.exports = function (requireAdapted, config) {
 };
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -974,7 +1120,7 @@ var DesktopLayout = function (_Component) {
 exports.default = DesktopLayout;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1024,19 +1170,19 @@ var MobileLayout = function (_Component) {
 exports.default = MobileLayout;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("adaptive-imports");
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("mobile-detect");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
