@@ -1,4 +1,4 @@
-import adaptiveImports from '../../../adaptive-imports';
+import arcResolver from 'arc-resolver';
 import basePage from './base-page.js';
 import express from 'express';
 import fs from 'fs';
@@ -28,7 +28,7 @@ const getDeviceInfo = (req) => {
 	return deviceInfo;
 }
 
-// Create array of flags to pass to adaptive imports module to get output path
+// Create array of flags to pass to arc resolver module to get output path
 const getFlags = () => {
 	let flags = [];
 	
@@ -46,8 +46,8 @@ const getOutputPath = () => {
 	let outputPath = '';
 	const flags = getFlags();
 
-	// Use adaptive-imports to find the directory in the same location that matches the most flags
-	outputPath = adaptiveImports.adaptResource('DIST/default', flags);
+	// Use arc-resolver to find the directory in the same location that matches the most flags
+	outputPath = arcResolver.adaptResource('DIST/default', flags);
 
 	return outputPath;
 }

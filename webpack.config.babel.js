@@ -1,4 +1,4 @@
-import adaptiveImportsWebpack from '../adaptive-imports/webpack';
+import arcWebpack from 'arc-webpack';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
@@ -17,11 +17,11 @@ const clientConfig = (...flags) => ({
     entry: './src/app-client',
     resolve: {
         plugins: [
-            new adaptiveImportsWebpack.adaptFiles(flags)
+            new arcWebpack.adaptFiles(flags)
         ]
     },
     output: {
-        path: adaptiveImportsWebpack.getOutputPath(__dirname, 'DIST', flags),
+        path: arcWebpack.getOutputPath(__dirname, 'DIST', flags),
         filename: 'client.bundle.js',
     },
     module: {
