@@ -76,7 +76,7 @@ const serverConfig = (...flags) => ({
         },
         {
             test: /\.adaptive$/,
-            loader: 'adaptive-imports/webpack/proxy-loader',
+            loader: 'adaptive-imports/webpack/proxy-loader'
         }]
     },
     plugins: [

@@ -905,10 +905,14 @@ app.listen(2222, function () {
 
 var React = __webpack_require__(2);
 
+function getDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
 module.exports = function (requireAdapted, config) {
     function AdaptiveComponent(props, context) {
         var flags = context.flags;
-        var Component = requireAdapted(flags).default;
+        var Component = getDefault(requireAdapted(flags));
         return React.createElement(Component, props);
     }
 
