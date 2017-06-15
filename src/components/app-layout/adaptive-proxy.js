@@ -1,6 +1,6 @@
 var React = require('react');
 
-function getDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function getDefault(obj) { return obj && obj.__esModule ? obj.default : obj; }
 
 module.exports = function (requireAdapted, config) {
     function AdaptiveComponent(props, context) {

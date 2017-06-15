@@ -906,7 +906,7 @@ app.listen(2222, function () {
 var React = __webpack_require__(2);
 
 function getDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
+    return obj && obj.__esModule ? obj.default : obj;
 }
 
 module.exports = function (requireAdapted, config) {
