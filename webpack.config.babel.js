@@ -1,4 +1,4 @@
-import adaptiveImportsWebpack from '../adaptive-imports/webpack';
+import adaptiveImportsWebpack from 'adaptive-imports/webpack';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
@@ -9,7 +9,11 @@ import { adaptResource } from '../adaptive-imports';
 const res = rel => path.resolve(__dirname, rel);
 
 const flagset = [
-    ['mobile']
+    [],
+    ['mobile'],
+    ['mobile', 'iphone'],
+    ['mobile', 'iphone', 'ios'],
+    ['desktop']
 ];
 
 const clientConfig = (...flags) => ({
@@ -20,11 +24,6 @@ const clientConfig = (...flags) => ({
         ],
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
         extensions: ['.js', '.json', '.adaptive']
-    },
-    resolveLoader: {
-        alias: {
-            'minimal-loader': res('../minimal-loader/minimal-loader'),
-        },
     },
     output: {
         path: adaptiveImportsWebpack.getOutputPath(__dirname, 'DIST', flags),
@@ -43,10 +42,6 @@ const clientConfig = (...flags) => ({
                 fallback: 'style-loader'
             }),
             include: path.join(__dirname, 'src/components')
-        },
-        {
-            test: /\.adaptive$/,
-            loader: 'minimal-loader'
         }]
     },
     plugins: [
@@ -60,11 +55,6 @@ const serverConfig = (...flags) => ({
     resolve: {
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
         extensions: ['.js', '.json', '.adaptive']
-    },
-    resolveLoader: {
-        alias: {
-            'minimal-loader': res('../minimal-loader/minimal-loader'),
-        },
     },
     output: {
         path: __dirname + '/DIST',
@@ -86,7 +76,7 @@ const serverConfig = (...flags) => ({
         },
         {
             test: /\.adaptive$/,
-            loader: 'minimal-loader'
+            loader: 'adaptive-imports/webpack/proxy-loader',
         }]
     },
     plugins: [

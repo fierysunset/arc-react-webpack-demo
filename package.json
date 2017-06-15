@@ -1,6 +1,6 @@
 {
 	"name": "arc-react-webpack-demo",
-	"version": "1.0",
+	"version": "1.0.0",
 	"description": "ARC Demo using React and Webpack, with both server and client rendering",
 	"main": "server.bundle.js",
 	"scripts": {
