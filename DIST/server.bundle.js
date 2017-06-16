@@ -76,16 +76,10 @@ module.exports = require("react");
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("fs");
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 module.exports = require("path");
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var current = (process.versions && process.versions.node && process.versions.node.split('.')) || [];
@@ -113,6 +107,12 @@ module.exports = core;
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
@@ -136,7 +136,7 @@ module.exports = function () {
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(2);
+var path = __webpack_require__(1);
 var parse = path.parse || __webpack_require__(12);
 
 module.exports = function nodeModulesPaths(start, opts) {
@@ -183,7 +183,7 @@ module.exports = function nodeModulesPaths(start, opts) {
     "default": "desktop"
 };
             let proxy = __webpack_require__(10);
-            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
+            let resourcePath = '/Users/mirawlings/code/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
             let getBestMatch = __webpack_require__(11).getBestMatch;
             let matches = [{ exports:__webpack_require__(20), flags:["mobile"]},{ exports:__webpack_require__(19), flags:[]}];
 
@@ -279,10 +279,6 @@ var _express2 = _interopRequireDefault(_express);
 
 var _arcReact = __webpack_require__(22);
 
-var _fs = __webpack_require__(1);
-
-var _fs2 = _interopRequireDefault(_fs);
-
 var _mobileDetect = __webpack_require__(24);
 
 var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
@@ -298,29 +294,24 @@ var _server2 = _interopRequireDefault(_server);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
-var deviceInfo = {};
-var initialState = {
-	title: 'ARC React/Webpack Demo'
-};
 
 // Store any necessary device details into an object for later use
 var getDeviceInfo = function getDeviceInfo(req) {
 	var md = new _mobileDetect2.default(req.headers['user-agent']);
 
-	deviceInfo = {
+	return {
 		desktop: md.phone() === null,
 		mobile: md.phone() !== null,
 		android: md.os() === 'AndroidOS',
 		ios: md.os() === 'iOS',
 		iphone: md.is('iPhone')
 	};
-
-	return deviceInfo;
 };
 
 // Create array of flags to pass to arc resolver module to get output path
-var getFlags = function getFlags() {
+var getFlags = function getFlags(req) {
 	var flags = [];
+	var deviceInfo = getDeviceInfo(req);
 
 	for (var key in deviceInfo) {
 		if (deviceInfo[key]) {
@@ -332,26 +323,29 @@ var getFlags = function getFlags() {
 };
 
 // Get output path based on flags from the user's device info
-var getOutputPath = function getOutputPath() {
-	var outputPath = '';
-	var flags = getFlags();
-
+var getOutputPath = function getOutputPath(flags) {
 	// Use arc-resolver to find the directory in the same location that matches the most flags
-	outputPath = _arcResolver2.default.adaptResource('DIST/default', flags);
-
-	return outputPath;
+	return _arcResolver2.default.adaptResource('DIST/default', flags);
 };
 
 router.get('/', function (req, res) {
-	initialState.deviceInfo = getDeviceInfo(req);
-	initialState.outputPath = getOutputPath();
+	var flags = getFlags(req);
+	var outputPath = getOutputPath(flags);
+	var initialState = {};
 
-	var html = _server2.default.renderToString(_react2.default.createElement(
+	var appHtml = _server2.default.renderToString(_react2.default.createElement(
 		_arcReact.FlagProvider,
-		{ flags: getFlags() },
+		{ flags: flags },
 		_react2.default.createElement(_appLayout2.default, { initialState: initialState })
 	));
-	res.status(200).send((0, _basePage2.default)(html, initialState));
+
+	var pageHtml = (0, _basePage2.default)({
+		title: 'ARC React/Webpack Demo',
+		appHtml: appHtml,
+		outputPath: outputPath
+	});
+
+	res.status(200).send(pageHtml);
 });
 
 exports.default = router;
@@ -386,8 +380,8 @@ module.exports = function (requireAdapted, config) {
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fs = __webpack_require__(1);
-var path = __webpack_require__(2);
+var fs = __webpack_require__(3);
+var path = __webpack_require__(1);
 var resolve = __webpack_require__(13);
 var directoryListings = {};
 var fileMatches = {};
@@ -679,7 +673,7 @@ module.exports.win32 = win32.parse;
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(3);
+var core = __webpack_require__(2);
 var async = __webpack_require__(14);
 async.core = core;
 async.isCore = function isCore(x) { return core[x]; };
@@ -693,9 +687,9 @@ module.exports = async;
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(3);
-var fs = __webpack_require__(1);
-var path = __webpack_require__(2);
+var core = __webpack_require__(2);
+var fs = __webpack_require__(3);
+var path = __webpack_require__(1);
 var caller = __webpack_require__(5);
 var nodeModulesPaths = __webpack_require__(6);
 
@@ -954,9 +948,9 @@ module.exports = {
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(3);
-var fs = __webpack_require__(1);
-var path = __webpack_require__(2);
+var core = __webpack_require__(2);
+var fs = __webpack_require__(3);
+var path = __webpack_require__(1);
 var caller = __webpack_require__(5);
 var nodeModulesPaths = __webpack_require__(6);
 
@@ -1055,8 +1049,8 @@ module.exports = function (x, options) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var basePage = function basePage(html, initialState) {
-    return "\n    <!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no\">\n\n            <title>" + initialState.title + "</title>\n            \n            <link rel=\"stylesheet\" href=\"" + initialState.outputPath + "/style.css\">\n        </head>\n        <body>\n            <div id=\"main-content\">" + html + "</div>\n\n            <script>\n                window.__INITIAL_STATE__ = " + JSON.stringify(initialState) + "\n            </script>\n            <script src=\"" + initialState.outputPath + "/client.bundle.js\"></script>\n        </body>\n    </html>\n    ";
+var basePage = function basePage(props) {
+    return "\n    <!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no\">\n\n            <title>" + props.title + "</title>\n\n            <link rel=\"stylesheet\" href=\"" + props.outputPath + "/style.css\">\n        </head>\n        <body>\n            <div id=\"main-content\">" + props.appHtml + "</div>\n\n            <script>\n                window.__INITIAL_STATE__ = " + JSON.stringify(props.initialState) + "\n            </script>\n            <script src=\"" + props.outputPath + "/client.bundle.js\"></script>\n        </body>\n    </html>\n    ";
 };
 
 exports.default = basePage;
