@@ -1,3 +1,7 @@
+#root {
+    margin: 8px;
+}
+
 .app-layout {
     max-width: 1250px;
     min-width: 900px;
