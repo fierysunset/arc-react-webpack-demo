@@ -9,8 +9,8 @@ import webpack from 'webpack';
 const flagset = [
     [],
     ['mobile'],
-    ['mobile', 'iphone'],
-    ['mobile', 'iphone', 'ios'],
+    // ['mobile', 'iphone'],
+    // ['mobile', 'iphone', 'ios'],
     ['desktop']
 ];
 

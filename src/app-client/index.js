@@ -12,4 +12,4 @@ class Index extends Component {
     }
 }
 
-ReactDOM.render(<Index/>, document.getElementById('main-content'));
+ReactDOM.render(<Index/>, document.getElementById('root'));

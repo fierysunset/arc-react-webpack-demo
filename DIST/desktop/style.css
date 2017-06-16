@@ -1,3 +1,80 @@
-.hello-world {
-    color: green;
+.ebay-logo {
+    clip: rect(47px, 118px, 95px, 0px);
+    height: 95px;
+    left: 0;
+    position: absolute;
+    top: -47px;
+    width: 118px;
+}
+
+.header {
+    display: flex;
+    height: 70px;
+    position: relative;
+}
+
+input {
+    height: 18px;
+    flex: 1;
+    margin: 0 5px 0 175px;
+    font-size: 16px;
+    padding: 10px 0 9px 8px;
+}
+
+button {
+    background-color: #0654ba;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    height: 40px;
+    padding: 0 48px;
+}.image-container {
+    border: 1px solid lightgray;
+    background-color: white;
+}
+
+.image-container img {
+    width: 400px;
+}.item-details {
+    flex: 1;
+    background-color: #e2e2e2;
+    margin-right: 15px;
+    padding: 15px;
+}.item-title {
+    border-bottom: 1px solid lightgray;
+    margin: 0 0 20px 0;
+    padding: 5px 15px;
+}h5 {
+    margin: 0 0 3px 0;
+}
+
+.seller-details {
+    border: 1px solid lightgray;
+    padding: 15px;
+    width: 200px;
+}body {
+    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
+    background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg")
+}.app-layout {
+    max-width: 1250px;
+    min-width: 900px;
+    margin: 0 auto;
+}
+
+.main-content,
+.column {
+    display: flex;
+}
+
+.column {
+    display: flex;
+}
+
+.details {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.flex1 {
+    flex: 1;
 }

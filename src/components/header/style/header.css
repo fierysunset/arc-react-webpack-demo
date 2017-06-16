@@ -1,0 +1,31 @@
+.ebay-logo {
+    clip: rect(47px, 118px, 95px, 0px);
+    height: 95px;
+    left: 0;
+    position: absolute;
+    top: -47px;
+    width: 118px;
+}
+
+.header {
+    display: flex;
+    height: 70px;
+    position: relative;
+}
+
+input {
+    height: 18px;
+    flex: 1;
+    margin: 0 5px 0 175px;
+    font-size: 16px;
+    padding: 10px 0 9px 8px;
+}
+
+button {
+    background-color: #0654ba;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    height: 40px;
+    padding: 0 48px;
+}

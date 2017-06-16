@@ -1,0 +1,23 @@
+.app-layout {
+    max-width: 1250px;
+    min-width: 900px;
+    margin: 0 auto;
+}
+
+.main-content,
+.column {
+    display: flex;
+}
+
+.column {
+    display: flex;
+}
+
+.details {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.flex1 {
+    flex: 1;
+}
