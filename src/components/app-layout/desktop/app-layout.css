@@ -4,7 +4,7 @@
 
 .app-layout {
     max-width: 1250px;
-    min-width: 900px;
+    min-width: 768px; /* down to tablet size */
     margin: 0 auto;
 }
 
@@ -13,8 +13,8 @@
     display: flex;
 }
 
-.column {
-    display: flex;
+.image-col {
+    width: 40%;
 }
 
 .details {

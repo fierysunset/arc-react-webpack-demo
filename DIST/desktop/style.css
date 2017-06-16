@@ -34,7 +34,7 @@ button {
 }
 
 .image-container img {
-    width: 400px;
+    width: 100%;
 }.item-details {
     flex: 1;
     background-color: #e2e2e2;
@@ -63,7 +63,7 @@ button {
 
 .app-layout {
     max-width: 1250px;
-    min-width: 900px;
+    min-width: 768px; /* down to tablet size */
     margin: 0 auto;
 }
 
@@ -72,8 +72,8 @@ button {
     display: flex;
 }
 
-.column {
-    display: flex;
+.image-col {
+    width: 40%;
 }
 
 .details {

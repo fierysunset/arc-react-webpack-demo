@@ -14,7 +14,7 @@ export default class AppLayout extends Component {
                 <Header/>
 
                 <div className="main-content">
-                    <div className="column item-image">
+                    <div className="column image-col">
                         <Image/>
                     </div>
                     <div className="details flex1">

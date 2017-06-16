@@ -9583,7 +9583,7 @@ var AppLayout = function (_Component) {
                     { className: 'main-content' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'column item-image' },
+                        { className: 'column image-col' },
                         _react2.default.createElement(_image2.default, null)
                     ),
                     _react2.default.createElement(
