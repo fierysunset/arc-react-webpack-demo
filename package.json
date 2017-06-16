@@ -21,6 +21,9 @@
 	"author": "conchang",
 	"license": "MIT",
 	"dependencies": {
+		"arc-react": "^1.0.0",
+		"arc-resolver": "^1.0.0",
+		"arc-webpack": "^1.0.0",
 		"mobile-detect": "^1.3.6",
 		"react": "^15.2.1",
 		"react-dom": "^15.2.1"
