@@ -7,7 +7,7 @@ export default class SellerDetails extends Component {
             <div className="seller-details">
                 <h5>Seller Information</h5>
                 <a href="#">SomeAwesomeSellerName</a><br/>
-                Over 9000% Positive feedback
+                101.1% Positive feedback
             </div>
         );
     }

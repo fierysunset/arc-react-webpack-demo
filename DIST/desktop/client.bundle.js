@@ -9948,7 +9948,7 @@ var SellerDetails = function (_Component) {
                     'SomeAwesomeSellerName'
                 ),
                 _react2.default.createElement('br', null),
-                'Over 9000% Positive feedback'
+                '101.1% Positive feedback'
             );
         }
     }]);

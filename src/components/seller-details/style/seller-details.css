@@ -3,6 +3,7 @@ h5 {
 }
 
 .seller-details {
+    line-height: 1.3;
     border: 1px solid lightgray;
     padding: 15px;
     width: 200px;

@@ -9683,28 +9683,71 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Header = function (_Component) {
     _inherits(Header, _Component);
 
-    function Header() {
+    function Header(props) {
         _classCallCheck(this, Header);
 
-        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+        _this.state = {
+            overlayOpen: false
+        };
+        return _this;
     }
 
     _createClass(Header, [{
+        key: 'closeSearchOverlay',
+        value: function closeSearchOverlay(e) {
+            this.setState({
+                overlayOpen: false
+            });
+        }
+    }, {
+        key: 'openSearchOverlay',
+        value: function openSearchOverlay(e) {
+            this.setState({
+                overlayOpen: true
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: 'header' },
+                null,
                 _react2.default.createElement(
                     'div',
-                    { className: 'ebay-logo' },
-                    _react2.default.createElement('img', { width: '250', height: '200', src: 'http://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png' })
+                    { className: 'header' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'ebay-logo' },
+                        _react2.default.createElement('img', { src: 'http://ir.ebaystatic.com/pictures/aw/pics/mobile/images/logo_new_d_v2.png' })
+                    ),
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'icon-container' },
+                        _react2.default.createElement('span', { className: 'icon-button icon-search', onClick: this.openSearchOverlay.bind(this) }),
+                        _react2.default.createElement('span', { className: 'icon-button icon-profile' }),
+                        _react2.default.createElement('span', { className: 'icon-button icon-shopcart' })
+                    )
                 ),
-                _react2.default.createElement('input', { placeholder: 'Search...' }),
                 _react2.default.createElement(
-                    'button',
-                    null,
-                    'Search'
+                    'div',
+                    { className: 'search-overlay' + (!this.state.overlayOpen ? ' hide' : '') },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'search-row' },
+                        _react2.default.createElement('input', { placeholder: 'Search...' }),
+                        _react2.default.createElement(
+                            'button',
+                            null,
+                            _react2.default.createElement('span', { className: 'icon-button icon-search-white' })
+                        ),
+                        _react2.default.createElement(
+                            'a',
+                            { className: 'cancel', onClick: this.closeSearchOverlay.bind(this), href: 'javascript:;' },
+                            'Cancel'
+                        )
+                    )
                 )
             );
         }
@@ -9924,7 +9967,7 @@ var SellerDetails = function (_Component) {
                     'SomeAwesomeSellerName'
                 ),
                 _react2.default.createElement('br', null),
-                'Over 9000% Positive feedback'
+                '101.1% Positive feedback'
             );
         }
     }]);
