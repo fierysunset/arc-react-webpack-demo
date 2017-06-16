@@ -5,15 +5,18 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 const router = express.Router();
-const initialState = {
-	title: 'ARC React/Webpack Demo'
-};
 
 router.get('/', function (req, res) {
-	const html = ReactDOMServer.renderToString(
+	const appHtml = ReactDOMServer.renderToString(
 		<HelloWorld/>
 	);
-	res.status(200).send(basePage(html, initialState));
+
+	const pageHtml = basePage({
+		title: 'ARC React/Webpack Demo',
+		appHtml
+	});
+
+	res.status(200).send(pageHtml);
 });
 
 export default router;
