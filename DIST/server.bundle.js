@@ -205,7 +205,7 @@ function getFileMatches(filepath, extensions) {
     var basename = filename.slice(0, extStart);
     var extension = filename.slice(extStart + 1);
     var files = getDirectoryListing(dirname);
-    var isIndexAdaptive = filename === 'index.adaptive';
+    var isIndexAdaptive = filename === 'index.arc';
     var matches = [];
     var hasDefault = false;
     var defaultName;
@@ -299,7 +299,7 @@ function adaptResource(filepath, flags) {
 
 function resolveFrom(requestingFile, targetFile, options) {
     var flags = options.flags;
-    var extensions = (options.extensions || []).concat('.adaptive');
+    var extensions = (options.extensions || []).concat('.arc');
 
     var resolvedFile = resolve.sync(targetFile, {
         basedir: path.dirname(requestingFile),
@@ -402,7 +402,7 @@ module.exports = function nodeModulesPaths(start, opts) {
     "default": "desktop"
 };
             let proxy = __webpack_require__(5);
-            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/header/index.adaptive';
+            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/header/index.arc';
             let getBestMatch = __webpack_require__(6).getBestMatch;
             let matches = [{ exports:__webpack_require__(27), flags:["mobile"]},{ exports:__webpack_require__(26), flags:[]}];
 
@@ -1218,7 +1218,7 @@ module.exports = function (x, options) {
     "default": "desktop"
 };
             let proxy = __webpack_require__(5);
-            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.adaptive';
+            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.arc';
             let getBestMatch = __webpack_require__(6).getBestMatch;
             let matches = [{ exports:__webpack_require__(25), flags:["mobile"]},{ exports:__webpack_require__(24), flags:[]}];
 
