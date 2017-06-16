@@ -49,7 +49,7 @@ const clientConfig = (...flags) => ({
 });
 
 const serverConfig = (...flags) => ({
-    entry: './src/app-server',
+    entry: './src/app-server/server',
     resolve: {
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
         extensions: ['.js', '.json', '.adaptive']
