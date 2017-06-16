@@ -46,7 +46,7 @@ const clientConfig = (...flags) => ({
 });
 
 const serverConfig = (...flags) => ({
-    entry: './src/app-server',
+    entry: './src/app-server/server',
     output: {
         path: __dirname + '/DIST',
         filename: 'server.bundle.js',
