@@ -21,7 +21,7 @@ const clientConfig = (...flags) => ({
             new arcWebpack.adaptFiles(flags)
         ],
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
-        extensions: ['.js', '.json', '.adaptive']
+        extensions: ['.js', '.json', '.arc']
     },
     output: {
         path: arcWebpack.getOutputPath(__dirname, 'DIST', flags),
@@ -52,7 +52,7 @@ const serverConfig = (...flags) => ({
     entry: './src/app-server/server',
     resolve: {
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
-        extensions: ['.js', '.json', '.adaptive']
+        extensions: ['.js', '.json', '.arc']
     },
     output: {
         path: __dirname + '/DIST',
@@ -73,7 +73,7 @@ const serverConfig = (...flags) => ({
             include: path.join(__dirname, 'src/components')
         },
         {
-            test: /\.adaptive$/,
+            test: /\.arc$/,
             loader: 'arc-webpack/proxy-loader',
             include: path.join(__dirname, 'src/components')
         }]
