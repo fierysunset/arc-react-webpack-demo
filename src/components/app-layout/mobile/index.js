@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import HelloWorld from '../../hello-world';
+import React, { Component } from 'react';
+import HelloWorld from 'components/hello-world';
 
 export default class MobileLayout extends Component {
     render() {

@@ -369,7 +369,6 @@ module.exports = function (requireAdapted, config) {
     function AdaptiveComponent(props, context) {
         var flags = context.flags;
         var Component = getDefault(requireAdapted(flags));
-        console.log(Component);
         return React.createElement(Component, props);
     }
 
