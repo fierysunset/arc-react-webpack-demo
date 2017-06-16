@@ -3,4 +3,4 @@
 A branch with:
 
 - a basic Hello World done with both client and server rendering
-- a template split by desktop and mobile: one done adaptively (`app-layout`) and one done non-adaptively (`app-layout-non-adaptive`)
+- a template split by desktop and mobile: one done with ARC (`app-layout`) and one without (`app-layout-non-arc`)
