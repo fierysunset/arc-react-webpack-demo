@@ -1,4 +1,4 @@
-const basePage = (html, initialState) => {
+const basePage = (props) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -6,17 +6,17 @@ const basePage = (html, initialState) => {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no">
 
-            <title>${initialState.title}</title>
+            <title>${props.title}</title>
             
-            <link rel="stylesheet" href="${initialState.outputPath}/style.css">
+            <link rel="stylesheet" href="${props.outputPath}/style.css">
         </head>
         <body>
-            <div id="main-content">${html}</div>
+            <div id="root">${props.appHtml}</div>
 
             <script>
-                window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+                window.__INITIAL_STATE__ = ${JSON.stringify(props.initialState)}
             </script>
-            <script src="${initialState.outputPath}/client.bundle.js"></script>
+            <script src="${props.outputPath}/client.bundle.js"></script>
         </body>
     </html>
     `

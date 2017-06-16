@@ -9623,7 +9623,7 @@ var Index = function (_Component) {
     return Index;
 }(_react.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Index, null), document.getElementById('main-content'));
+_reactDom2.default.render(_react2.default.createElement(Index, null), document.getElementById('root'));
 
 /***/ }),
 /* 84 */

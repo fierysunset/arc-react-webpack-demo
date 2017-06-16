@@ -124,29 +124,24 @@ var _server2 = _interopRequireDefault(_server);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
-var deviceInfo = {};
-var initialState = {
-	title: 'ARC React/Webpack Demo'
-};
 
 // Store any necessary device details into an object for later use
 var getDeviceInfo = function getDeviceInfo(req) {
 	var md = new _mobileDetect2.default(req.headers['user-agent']);
 
-	deviceInfo = {
+	return {
 		desktop: md.phone() === null,
 		mobile: md.phone() !== null,
 		android: md.os() === 'AndroidOS',
 		ios: md.os() === 'iOS',
 		iphone: md.is('iPhone')
 	};
-
-	return deviceInfo;
 };
 
 // Create array of flags to pass to arc resolver module to get output path
-var getFlags = function getFlags() {
+var getFlags = function getFlags(req) {
 	var flags = [];
+	var deviceInfo = getDeviceInfo(req);
 
 	for (var key in deviceInfo) {
 		if (deviceInfo[key]) {
@@ -158,22 +153,25 @@ var getFlags = function getFlags() {
 };
 
 // Get output path based on flags from the user's device info
-var getOutputPath = function getOutputPath() {
-	var outputPath = '';
-	var flags = getFlags();
-
+var getOutputPath = function getOutputPath(flags) {
 	// Use arc-resolver to find the directory in the same location that matches the most flags
-	outputPath = _arcResolver2.default.adaptResource('DIST/default', flags);
-
-	return outputPath;
+	return _arcResolver2.default.adaptResource('DIST/default', flags);
 };
 
 router.get('/', function (req, res) {
-	var deviceInfo = getDeviceInfo(req);
-	initialState.outputPath = getOutputPath();
+	var flags = getFlags(req);
+	var outputPath = getOutputPath(flags);
+	var initialState = {};
 
-	var html = _server2.default.renderToString(_react2.default.createElement(_helloWorld2.default, null));
-	res.status(200).send((0, _basePage2.default)(html, initialState));
+	var appHtml = _server2.default.renderToString(_react2.default.createElement(_helloWorld2.default, null));
+
+	var pageHtml = (0, _basePage2.default)({
+		title: 'ARC React/Webpack Demo',
+		appHtml: appHtml,
+		outputPath: outputPath
+	});
+
+	res.status(200).send(pageHtml);
 });
 
 exports.default = router;
@@ -188,8 +186,8 @@ exports.default = router;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var basePage = function basePage(html, initialState) {
-    return "\n    <!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no\">\n\n            <title>" + initialState.title + "</title>\n            \n            <link rel=\"stylesheet\" href=\"" + initialState.outputPath + "/style.css\">\n        </head>\n        <body>\n            <div id=\"main-content\">" + html + "</div>\n\n            <script>\n                window.__INITIAL_STATE__ = " + JSON.stringify(initialState) + "\n            </script>\n            <script src=\"" + initialState.outputPath + "/client.bundle.js\"></script>\n        </body>\n    </html>\n    ";
+var basePage = function basePage(props) {
+    return "\n    <!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no\">\n\n            <title>" + props.title + "</title>\n            \n            <link rel=\"stylesheet\" href=\"" + props.outputPath + "/style.css\">\n        </head>\n        <body>\n            <div id=\"root\">" + props.appHtml + "</div>\n\n            <script>\n                window.__INITIAL_STATE__ = " + JSON.stringify(props.initialState) + "\n            </script>\n            <script src=\"" + props.outputPath + "/client.bundle.js\"></script>\n        </body>\n    </html>\n    ";
 };
 
 exports.default = basePage;
