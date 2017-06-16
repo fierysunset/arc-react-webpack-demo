@@ -2,9 +2,10 @@ import arcResolver from 'arc-resolver';
 import AppLayout from '../components/app-layout';
 import basePage from './base-page.js';
 import express from 'express';
+import { FlagProvider } from 'arc-react';
 import fs from 'fs';
 import MobileDetect from 'mobile-detect';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 const router = express.Router();
@@ -51,21 +52,6 @@ const getOutputPath = () => {
 
 	return outputPath;
 }
-
-class FlagProvider extends Component {
-	getChildContext() {
-		return {
-			flags: this.props.flags
-		}
-	}
-	render() {
-		return this.props.children;
-	}
-}
-
-FlagProvider.childContextTypes = {
-	flags: React.PropTypes.array
-};
 
 router.get('/', function (req, res) {
 	initialState.deviceInfo = getDeviceInfo(req);

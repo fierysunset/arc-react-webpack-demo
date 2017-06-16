@@ -1,4 +1,4 @@
 {
-    "proxy": "./adaptive-proxy",
+    "proxy": "arc-react/proxy",
     "default": "desktop"
 }
