@@ -1,0 +1,3 @@
+## simple-client-server-render
+
+A branch with a basic Hello World done with both client and server rendering. Nothing adaptive added yet...
