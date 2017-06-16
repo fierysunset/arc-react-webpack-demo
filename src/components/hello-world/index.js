@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './style/hello-world.css';
 
 export default class HelloWorld extends Component {
