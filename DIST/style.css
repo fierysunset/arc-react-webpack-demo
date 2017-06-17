@@ -110,7 +110,7 @@ button,
 input {
     height: 18px;
     flex: 1;
-    margin: 0 5px 0 175px;
+    margin: 5px 5px 0 175px;
     font-size: 16px;
     padding: 10px 0 9px 8px;
 }
@@ -122,6 +122,10 @@ button {
     font-size: 14px;
     height: 40px;
     width: 130px;
+}
+
+.header button {
+    margin-top: 5px;
 }.image-container {
     border: 1px solid lightgray;
     background-color: white;
@@ -151,9 +155,11 @@ button {
 
 .seller-details {
     line-height: 1.3;
+    background-color: white;
     border: 1px solid lightgray;
     padding: 15px;
     width: 200px;
+    height: 200px;
 }body {
     margin: 0;
     font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
@@ -164,26 +170,27 @@ button {
     font-size: 12px;
     margin-bottom: 15px;
 }#root {
-    margin: 8px;
+    margin: 8px 20px;
 }
 
 .app-layout {
     max-width: 1250px;
-    min-width: 768px; /* down to ipad size */
+    min-width: 900px;
     margin: 0 auto;
 }
 
-.main-content,
-.column {
+.main-content, .column, .item-details-container {
     display: flex;
 }
 
 .image-col {
     width: 40%;
+    max-width: 430px;
+    min-width: 300px;
+    align-items: flex-start;
 }
 
 .details {
-    flex: 1;
     margin-left: 15px;
 }
 
@@ -191,13 +198,24 @@ button {
     flex: 1;
 }
 
-.item-details-container {
-    flex: 1;
-    background-color: #e2e2e2;
+.mid-col {
     margin-right: 15px;
+    flex-wrap: wrap;
+}
+
+.mid-col .wireframe {
+    width: 100%;
+}
+
+.item-details-container {
+    background-color: #e2e2e2;
     padding: 15px;
 }
 
 .wireframe {
-    background-color: lightgray;
+    border: 1px solid #eeeeee;
+    height: 250px;
+    margin-top: 20px;
+    /* Diagonal stripes */
+    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);
 }

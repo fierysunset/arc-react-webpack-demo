@@ -16,7 +16,7 @@
 input {
     height: 18px;
     flex: 1;
-    margin: 0 5px 0 175px;
+    margin: 5px 5px 0 175px;
     font-size: 16px;
     padding: 10px 0 9px 8px;
 }
@@ -28,4 +28,8 @@ button {
     font-size: 14px;
     height: 40px;
     width: 130px;
+}
+
+.header button {
+    margin-top: 5px;
 }

@@ -9604,10 +9604,14 @@ var AppLayout = function (_Component) {
                             { className: 'column' },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'column item-details-container flex1' },
-                                _react2.default.createElement(_itemDetails2.default, null),
-                                _react2.default.createElement(_itemActions2.default, null),
-                                _react2.default.createElement('div', { 'class': 'wireframe' })
+                                { className: 'column mid-col flex1' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'item-details-container flex1' },
+                                    _react2.default.createElement(_itemDetails2.default, null),
+                                    _react2.default.createElement(_itemActions2.default, null)
+                                ),
+                                _react2.default.createElement('div', { className: 'wireframe' })
                             ),
                             _react2.default.createElement(
                                 'div',
@@ -9615,9 +9619,9 @@ var AppLayout = function (_Component) {
                                 _react2.default.createElement(_sellerDetails2.default, null)
                             )
                         )
-                    ),
-                    _react2.default.createElement('div', { 'class': 'wireframe' })
-                )
+                    )
+                ),
+                _react2.default.createElement('div', { className: 'wireframe' })
             );
         }
     }]);

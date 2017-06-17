@@ -23,9 +23,13 @@ export default class AppLayout extends Component {
                     <div className="details flex1">
                         <ItemTitle/>
                         <div className="column">
-                            <div className="column item-details-container flex1">
-                                <ItemDetails/>
-                                <ItemActions/>
+                            <div className="column mid-col flex1">
+                                <div className="item-details-container flex1">
+                                    <ItemDetails/>
+                                    <ItemActions/>
+                                </div>
+
+                                <div className="wireframe"></div>
                             </div>
                             <div className="column">
                                 <SellerDetails/>
@@ -33,6 +37,8 @@ export default class AppLayout extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div className="wireframe"></div>
             </div>
         );
     }

@@ -1,24 +1,25 @@
 #root {
-    margin: 8px;
+    margin: 8px 20px;
 }
 
 .app-layout {
     max-width: 1250px;
-    min-width: 768px; /* down to ipad size */
+    min-width: 900px;
     margin: 0 auto;
 }
 
-.main-content,
-.column {
+.main-content, .column, .item-details-container {
     display: flex;
 }
 
 .image-col {
     width: 40%;
+    max-width: 430px;
+    min-width: 300px;
+    align-items: flex-start;
 }
 
 .details {
-    flex: 1;
     margin-left: 15px;
 }
 
@@ -26,13 +27,24 @@
     flex: 1;
 }
 
-.item-details-container {
-    flex: 1;
-    background-color: #e2e2e2;
+.mid-col {
     margin-right: 15px;
+    flex-wrap: wrap;
+}
+
+.mid-col .wireframe {
+    width: 100%;
+}
+
+.item-details-container {
+    background-color: #e2e2e2;
     padding: 15px;
 }
 
 .wireframe {
-    background-color: lightgray;
+    border: 1px solid #eeeeee;
+    height: 250px;
+    margin-top: 20px;
+    /* Diagonal stripes */
+    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);
 }
