@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Breadcrumbs from 'components/breadcrumbs';
 import Header from 'components/header';
 import Image from 'components/image';
 import ItemActions from 'components/item-actions';
@@ -13,6 +14,7 @@ export default class AppLayout extends Component {
         return (
             <div className="app-layout">
                 <Header/>
+                <Breadcrumbs/>
 
                 <div className="main-content">
                     <div className="column image-col">

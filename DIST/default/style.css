@@ -1,4 +1,7 @@
-.ebay-logo {
+.breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 15px;
+}.ebay-logo {
     clip: rect(47px, 118px, 95px, 0px);
     height: 95px;
     left: 0;
@@ -97,4 +100,8 @@ button {
     background-color: #e2e2e2;
     margin-right: 15px;
     padding: 15px;
+}
+
+.wireframe {
+    background-color: lightgray;
 }

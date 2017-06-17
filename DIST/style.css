@@ -160,6 +160,9 @@ button {
     background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg")
 }body {
     font-size: 14px;
+}.breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 15px;
 }#root {
     margin: 8px;
 }
@@ -193,4 +196,8 @@ button {
     background-color: #e2e2e2;
     margin-right: 15px;
     padding: 15px;
+}
+
+.wireframe {
+    background-color: lightgray;
 }
