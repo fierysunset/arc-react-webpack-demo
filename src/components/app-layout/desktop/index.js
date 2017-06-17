@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from 'components/header';
 import Image from 'components/image';
+import ItemActions from 'components/item-actions';
 import ItemDetails from 'components/item-details';
 import ItemTitle from 'components/item-title';
 import SellerDetails from 'components/seller-details';
@@ -20,8 +21,9 @@ export default class AppLayout extends Component {
                     <div className="details flex1">
                         <ItemTitle/>
                         <div className="column">
-                            <div className="column flex1">
+                            <div className="column item-details-container flex1">
                                 <ItemDetails/>
+                                <ItemActions/>
                             </div>
                             <div className="column">
                                 <SellerDetails/>

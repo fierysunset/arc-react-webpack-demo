@@ -65,8 +65,11 @@ button {
     color: #ffffff;
     font-size: 14px;
     height: 39px;
-    margin: 10px 10px 0 0;
     padding: 0 14px 0 10px;
+}
+
+.search-overlay button {
+    margin: 10px 10px 0 0;
 }
 
 .icon-search-white {
@@ -118,7 +121,7 @@ button {
     color: #ffffff;
     font-size: 14px;
     height: 40px;
-    padding: 0 48px;
+    width: 130px;
 }.image-container {
     border: 1px solid lightgray;
     background-color: white;
@@ -126,11 +129,18 @@ button {
 
 .image-container img {
     width: 100%;
+}.item-actions {
+    width: 150px;
+}
+
+.item-actions button {
+    width: 150px;
+    margin-bottom: 10px;
 }.item-details {
-    flex: 1;
     background-color: #e2e2e2;
     margin-right: 15px;
-    padding: 15px;
+    flex: 1;
+    min-width: 100px;
 }.item-title {
     border-bottom: 1px solid lightgray;
     margin: 0 0 20px 0;
@@ -156,7 +166,7 @@ button {
 
 .app-layout {
     max-width: 1250px;
-    min-width: 768px; /* down to tablet size */
+    min-width: 768px; /* down to ipad size */
     margin: 0 auto;
 }
 
@@ -176,4 +186,11 @@ button {
 
 .flex1 {
     flex: 1;
+}
+
+.item-details-container {
+    flex: 1;
+    background-color: #e2e2e2;
+    margin-right: 15px;
+    padding: 15px;
 }

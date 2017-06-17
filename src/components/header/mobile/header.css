@@ -65,8 +65,11 @@ button {
     color: #ffffff;
     font-size: 14px;
     height: 39px;
-    margin: 10px 10px 0 0;
     padding: 0 14px 0 10px;
+}
+
+.search-overlay button {
+    margin: 10px 10px 0 0;
 }
 
 .icon-search-white {

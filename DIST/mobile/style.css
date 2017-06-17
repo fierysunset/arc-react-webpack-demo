@@ -65,8 +65,11 @@ button {
     color: #ffffff;
     font-size: 14px;
     height: 39px;
-    margin: 10px 10px 0 0;
     padding: 0 14px 0 10px;
+}
+
+.search-overlay button {
+    margin: 10px 10px 0 0;
 }
 
 .icon-search-white {
@@ -97,6 +100,14 @@ button,
 
 .image-container img {
     width: 100%;
+}.item-actions {
+    padding: 0 10px;
+}
+
+.item-actions button {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
 }.item-details {
     background-color: #e2e2e2;
     padding: 15px;
@@ -104,7 +115,7 @@ button,
 }.item-title {
     border-bottom: 1px solid lightgray;
     font-size: 20px; 
-    margin: 0 0 10px 0;
+    margin: 0;
     padding: 5px;
 }h5 {
     margin: 0 0 3px 0;
