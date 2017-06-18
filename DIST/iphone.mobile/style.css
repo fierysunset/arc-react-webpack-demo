@@ -162,3 +162,7 @@ body {
 }body {
     font-size: 14px;
 }
+
+.app-layout {
+    min-width: 320px;
+}

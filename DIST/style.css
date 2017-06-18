@@ -198,6 +198,10 @@ body {
     background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg")
 }body {
     font-size: 14px;
+}
+
+.app-layout {
+    min-width: 320px;
 }.breadcrumbs {
     font-size: 12px;
     margin-bottom: 15px;
