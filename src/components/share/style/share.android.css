@@ -1,0 +1,11 @@
+.share-container {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.share-icon {
+    content: url('https://cdn2.iconfinder.com/data/icons/social-messaging-productivity-1/128/share-android-2-128.png');
+    width: 20px;
+    margin-right: 7px;
+    margin-bottom: -5px;
+}

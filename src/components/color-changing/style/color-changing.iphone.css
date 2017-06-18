@@ -1,0 +1,11 @@
+.color-changing {
+    color: orange;
+}
+
+.color-text:after {
+    content: 'orange';
+}
+
+.device-type:after {
+    content: 'iphone';
+}

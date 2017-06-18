@@ -1,0 +1,46 @@
+.app-layout {
+    max-width: 1250px;
+    min-width: 768px; /* down to tablet size */
+    margin: 0 auto;
+    padding: 8px 20px;
+}
+
+.main-content, .column, .item-details-container {
+    display: flex;
+}
+
+.image-col {
+    width: 40%;
+    max-width: 430px;
+    align-items: flex-start;
+}
+
+.details {
+    margin-left: 15px;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.mid-col {
+    margin-right: 15px;
+    flex-wrap: wrap;
+}
+
+.mid-col .wireframe {
+    width: 100%;
+}
+
+.item-details-container {
+    background-color: #e2e2e2;
+    padding: 15px;
+}
+
+.wireframe {
+    border: 1px solid #eeeeee;
+    height: 200px;
+    margin: 10px 0;
+    /* Diagonal stripes */
+    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);
+}

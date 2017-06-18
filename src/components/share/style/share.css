@@ -1,0 +1,11 @@
+.share-container {
+    margin-top: 10px;
+    margin-left: 2px;
+    width: 100%;
+}
+
+.share-icon {
+    content: url('http://blog.agilebits.com/wp-content/uploads/2013/05/share-transparent.png');
+    width: 20px;
+    margin-right: 5px;
+}

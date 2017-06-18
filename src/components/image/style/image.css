@@ -1,0 +1,9 @@
+.image-container {
+    border: 1px solid lightgray;
+    background-color: white;
+}
+
+.image-container img {
+    width: 100%;
+}
+

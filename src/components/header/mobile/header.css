@@ -1,0 +1,95 @@
+.ebay-logo img {
+    width: 77px;
+    margin: 5px 0 0 5px;
+}
+
+.header {
+    background-color: white;
+    display: flex;
+}
+
+.icon-container {
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.icon-button {
+    background-image: url(http://ir.ebaystatic.com/rs/v/bjsll44fvq5gzelpqzuhsn1mx22.png);
+    background-repeat: no-repeat;
+    background-size: auto 20px;
+    height: 20px;
+    width: 20px;
+    margin: 15px 7px 0 7px;
+    display: inline-block;
+}
+
+.icon-search {
+    background-position: -31px 0;
+}
+
+.icon-profile {
+    background-position: -115px 0;
+}
+
+.icon-shopcart {
+    background-position: -986px 0;
+    width: 27px;
+    margin-left: 3px;
+}
+
+.hide {
+    display: none;
+}
+
+.search-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    top: 0;
+}
+
+input {
+    border: 1px solid #aaa;
+    line-height: 18px;
+    height: 40px;
+    padding: 0 10px;
+    margin: 10px 0 0 10px;
+    font-size: 16px;
+    flex: 1;
+}
+
+button {
+    background-color: #0654ba;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    height: 40px;
+    padding: 0 14px 0 10px;
+}
+
+.search-overlay button {
+    margin: 10px 10px 0 0;
+}
+
+.icon-search-white {
+    background-position: -1748px -1px;
+    background-size: auto 24px;
+    width: 26px;
+    height: 24px;
+    margin: 0;
+}
+
+.cancel {
+    margin: 20px 12px 0 0;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.search-row,
+input, 
+button,
+.cancel {
+    display: flex;
+}

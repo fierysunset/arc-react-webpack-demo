@@ -1,5 +1,9 @@
 .DS_Store
 .history
+<<<<<<< HEAD
 .vscode
 DIST/
+=======
+.vscode/
+>>>>>>> context-demo
 node_modules

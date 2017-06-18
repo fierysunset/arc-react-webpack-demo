@@ -1,18 +1,36 @@
-import webpack from 'webpack';
+import arcWebpack from 'arc-webpack';
+import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
-import path from 'path'
-import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
+import path from 'path';
+import webpack from 'webpack';
 
-const clientConfig = () => ({
+// Any potential combinations of flagsets your app may specialize for
+const flagset = [
+    [],
+    ['mobile'],
+    ['mobile', 'iphone'],
+    ['mobile', 'android'],
+    ['desktop']
+];
+
+const clientConfig = (...flags) => ({
     entry: './src/app-client',
+    resolve: {
+        plugins: [
+            new arcWebpack.adaptFiles(flags)
+        ],
+        modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
+        extensions: ['.js', '.json', '.arc']
+    },
     output: {
-        path: __dirname + '/DIST',
+        path: arcWebpack.getOutputPath(__dirname, 'DIST', flags),
         filename: 'client.bundle.js',
     },
     module: {
         rules: [{
             test: /\.js$/,
-            use: 'babel-loader',
+            loader: 'babel-loader',
             include: path.join(__dirname, 'src')
         },
         {
@@ -25,12 +43,17 @@ const clientConfig = () => ({
         }]
     },
     plugins: [
-        new ExtractTextWebpackPlugin('style.css')
+        new ExtractTextWebpackPlugin('style.css'),
+        new HtmlWebpackPlugin()
     ]
 });
 
-const serverConfig = () => ({
-    entry: './src/app-server',
+const serverConfig = (...flags) => ({
+    entry: './src/app-server/server',
+    resolve: {
+        modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
+        extensions: ['.js', '.json', '.arc']
+    },
     output: {
         path: __dirname + '/DIST',
         filename: 'server.bundle.js',
@@ -38,12 +61,17 @@ const serverConfig = () => ({
     module: {
         rules: [{
             test: /\.js$/,
-            use: 'babel-loader',
+            loader: 'babel-loader',
             include: path.join(__dirname, 'src')
         },
         {
             test: /\.css$/,
             use: 'css-loader/locals?modules',
+            include: path.join(__dirname, 'src/components')
+        },
+        {
+            test: /\.arc$/,
+            loader: 'arc-webpack/proxy-loader',
             include: path.join(__dirname, 'src/components')
         }]
     },
@@ -54,6 +82,15 @@ const serverConfig = () => ({
     externals: [nodeExternals()]
 });
 
-const getFlaggedConfigs = () => [clientConfig(), serverConfig()];
+// Array of webpack configs
+let configArr = [];
 
-module.exports = getFlaggedConfigs;
+// One for the server
+configArr.push(serverConfig());
+
+// And one per flagset for the client
+flagset.map(flags => {
+    configArr.push(clientConfig(...flags));
+});
+
+module.exports = configArr;

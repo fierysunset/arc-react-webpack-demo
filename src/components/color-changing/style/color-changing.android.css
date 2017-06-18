@@ -1,0 +1,11 @@
+.color-changing {
+    color: red;
+}
+
+.color-text:after {
+    content: 'red';
+}
+
+.device-type:after {
+    content: 'android';
+}
