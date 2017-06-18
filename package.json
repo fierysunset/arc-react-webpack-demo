@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.corp.ebay.com/conchang/react-express-webpack-babel"
+		"url": "https://github.com/fierysunset/arc-react-webpack-demo"
 	},
 	"keywords": [
 		"ARC",
@@ -18,7 +18,7 @@
 		"webpack",
 		"express"
 	],
-	"author": "conchang",
+	"author": "Connie C Chang <conniecchang@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
 		"mobile-detect": "^1.3.6",
