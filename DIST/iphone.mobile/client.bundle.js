@@ -9870,7 +9870,7 @@ var Image = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'image-container' },
-                _react2.default.createElement('img', { src: 'http://i.ebayimg.com/images/g/9aYAAOSwoydWsbPg/s-l1600.jpg' })
+                _react2.default.createElement('img', { src: 'http://i.ebayimg.com/00/s/NzY4WDgyOQ==/z/9aYAAOSwoydWsbPg/$_1.JPG' })
             );
         }
     }]);
