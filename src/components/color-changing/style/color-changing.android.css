@@ -1,9 +1,9 @@
 .color-changing {
-    color: green;
+    color: red;
 }
 
 .color-text:after {
-    content: 'green';
+    content: 'red';
 }
 
 .device-type:after {

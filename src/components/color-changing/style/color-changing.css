@@ -1,12 +1,11 @@
 .color-changing {
-    border: 1px solid lightgray;
-    color: red;
+    color: green;
 }
 
 .color-text:after {
-    content: 'red';
+    content: 'green';
 }
 
 .device-type:after {
-    content: 'desktop';
+    content: 'default';
 }

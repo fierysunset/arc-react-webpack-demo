@@ -10156,14 +10156,14 @@ var SellerDetails = function (_Component) {
                 'div',
                 { className: 'seller-details' },
                 _react2.default.createElement(
-                    'h5',
+                    'h4',
                     null,
                     'Seller Information'
                 ),
                 _react2.default.createElement(
                     'a',
                     { href: '#' },
-                    'SomeAwesomeSellerName'
+                    'SomeAwesomeName'
                 ),
                 _react2.default.createElement('br', null),
                 '101.1% Positive feedback'

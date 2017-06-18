@@ -1,11 +1,8 @@
-#root {
-    margin: 8px 20px;
-}
-
 .app-layout {
     max-width: 1250px;
-    min-width: 900px;
+    min-width: 768px; /* down to tablet size */
     margin: 0 auto;
+    padding: 8px 20px;
 }
 
 .main-content, .column, .item-details-container {
@@ -15,7 +12,6 @@
 .image-col {
     width: 40%;
     max-width: 430px;
-    min-width: 300px;
     align-items: flex-start;
 }
 

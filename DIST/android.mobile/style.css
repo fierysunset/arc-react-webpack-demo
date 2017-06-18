@@ -1,6 +1,5 @@
 .color-changing {
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    border: 1px solid lightgray;
     margin-top: 10px;
     padding: 15px;
     width: 100%;
@@ -11,11 +10,11 @@
     font-weight: bold;
 }
 .color-changing {
-    color: green;
+    color: red;
 }
 
 .color-text:after {
-    content: 'green';
+    content: 'red';
 }
 
 .device-type:after {
@@ -74,7 +73,7 @@
 input {
     border: 1px solid #aaa;
     line-height: 18px;
-    height: 37px;
+    height: 40px;
     padding: 0 10px;
     margin: 10px 0 0 10px;
     font-size: 16px;
@@ -86,7 +85,7 @@ button {
     border: none;
     color: #ffffff;
     font-size: 14px;
-    height: 39px;
+    height: 40px;
     padding: 0 14px 0 10px;
 }
 
@@ -139,7 +138,7 @@ button,
     font-size: 20px; 
     margin: 0;
     padding: 5px;
-}h5 {
+}h4 {
     margin: 0 0 3px 0;
     font-size: 16px;
 }
@@ -149,7 +148,14 @@ button,
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     padding: 15px;
-}body {
+}html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
     margin: 0;
     font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
     background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg")

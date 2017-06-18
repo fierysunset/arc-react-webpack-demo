@@ -20,6 +20,8 @@ export default class AppLayout extends Component {
                 <ItemActions/>
                 <SellerDetails/>
                 <ColorChanging/>
+
+                <br/><br/><br/>
             </div>
         );
     }

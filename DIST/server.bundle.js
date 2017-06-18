@@ -440,14 +440,14 @@ var SellerDetails = function (_Component) {
                 'div',
                 { className: 'seller-details' },
                 _react2.default.createElement(
-                    'h5',
+                    'h4',
                     null,
                     'Seller Information'
                 ),
                 _react2.default.createElement(
                     'a',
                     { href: '#' },
-                    'SomeAwesomeSellerName'
+                    'SomeAwesomeName'
                 ),
                 _react2.default.createElement('br', null),
                 '101.1% Positive feedback'
@@ -1105,7 +1105,10 @@ var AppLayout = function (_Component) {
                 _react2.default.createElement(_itemDetails2.default, null),
                 _react2.default.createElement(_itemActions2.default, null),
                 _react2.default.createElement(_sellerDetails2.default, null),
-                _react2.default.createElement(_colorChanging2.default, null)
+                _react2.default.createElement(_colorChanging2.default, null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null)
             );
         }
     }]);

@@ -14,7 +14,8 @@
 }
 
 input {
-    height: 18px;
+    border: 1px solid #aaa;
+    height: 40px;
     flex: 1;
     margin: 5px 5px 0 175px;
     font-size: 16px;

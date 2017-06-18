@@ -1,12 +1,13 @@
-h5 {
+h4 {
     margin: 0 0 3px 0;
 }
 
 .seller-details {
+    font-size: 14px;
     line-height: 1.3;
     background-color: white;
     border: 1px solid lightgray;
     padding: 15px;
     width: 200px;
-    height: 200px;
+    height: 222px;
 }
