@@ -39,7 +39,7 @@
 
 .wireframe {
     border: 1px solid #eeeeee;
-    height: 250px;
+    height: 200px;
     margin: 10px 0;
     /* Diagonal stripes */
     background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);

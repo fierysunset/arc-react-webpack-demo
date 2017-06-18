@@ -6,6 +6,7 @@ import ItemActions from 'components/item-actions';
 import ItemDetails from 'components/item-details';
 import ItemTitle from 'components/item-title';
 import SellerDetails from 'components/seller-details';
+import Share from 'components/share';
 import '../app-layout.css';
 import './app-layout.css';
 
@@ -19,6 +20,7 @@ export default class AppLayout extends Component {
                 <ItemDetails/>
                 <ItemActions/>
                 <SellerDetails/>
+                <Share/>
                 <ColorChanging/>
 
                 <br/><br/><br/>

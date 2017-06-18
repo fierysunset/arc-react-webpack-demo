@@ -44,7 +44,9 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
     - Can add any combination of flags to match against based on device type, brand, locale, etc
     - Shared CSS can be put at top level and also required in the template file
 - **Component only used in one device type:** `breadcrumbs`
-    - Example of something less commonly used in mobile context
+    - Example of something more typical in desktop and less commonly used in mobile context
+- **Specific branded image/style by device:** `share`
+    - Different icons are quickly recognizable to users of different devices
     
 ---
 

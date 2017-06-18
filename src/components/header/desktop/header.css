@@ -29,6 +29,7 @@ button {
     font-size: 14px;
     height: 40px;
     width: 130px;
+    cursor: pointer;
 }
 
 .header button {

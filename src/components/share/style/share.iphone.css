@@ -1,0 +1,10 @@
+.share-container {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.share-icon {
+    content: url('https://cdn1.iconfinder.com/data/icons/photos-collage-editor/22/share-upload-arrow-128.png');
+    width: 20px;
+    margin-bottom: -3px;
+}
