@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -93,7 +93,7 @@ function versionIncluded(version) {
     return false;
 }
 
-var data = __webpack_require__(15);
+var data = __webpack_require__(20);
 
 var core = {};
 for (var version in data) { // eslint-disable-line no-restricted-syntax
@@ -120,82 +120,6 @@ module.exports = require("express");
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-module.exports = function () {
-    // see https://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
-    var origPrepareStackTrace = Error.prepareStackTrace;
-    Error.prepareStackTrace = function (_, stack) { return stack; };
-    var stack = (new Error()).stack;
-    Error.prepareStackTrace = origPrepareStackTrace;
-    return stack[2].getFileName();
-};
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var path = __webpack_require__(1);
-var parse = path.parse || __webpack_require__(12);
-
-module.exports = function nodeModulesPaths(start, opts) {
-    var modules = opts && opts.moduleDirectory
-        ? [].concat(opts.moduleDirectory)
-        : ['node_modules']
-    ;
-
-    // ensure that `start` is an absolute path at this point,
-    // resolving against the process' current working directory
-    var absoluteStart = path.resolve(start);
-
-    var prefix = '/';
-    if (/^([A-Za-z]:)/.test(absoluteStart)) {
-        prefix = '';
-    } else if (/^\\\\/.test(absoluteStart)) {
-        prefix = '\\\\';
-    }
-
-    var paths = [absoluteStart];
-    var parsed = parse(absoluteStart);
-    while (parsed.dir !== paths[paths.length - 1]) {
-        paths.push(parsed.dir);
-        parsed = parse(parsed.dir);
-    }
-
-    var dirs = paths.reduce(function (dirs, aPath) {
-        return dirs.concat(modules.map(function (moduleDir) {
-            return path.join(prefix, aPath, moduleDir);
-        }));
-    }, []);
-
-    return opts && opts.paths ? dirs.concat(opts.paths) : dirs;
-};
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-            let config = {
-    "proxy": "arc-react/proxy",
-    "default": "desktop"
-};
-            let proxy = __webpack_require__(10);
-            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.arc';
-            let getBestMatch = __webpack_require__(11).getBestMatch;
-            let matches = [{ exports:__webpack_require__(20), flags:["mobile"]},{ exports:__webpack_require__(19), flags:[]}];
-
-            function requireAdapted(flags) {
-                return getBestMatch(matches, flags).exports;
-            }
-
-            module.exports = proxy(requireAdapted, config);
-        
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -211,9 +135,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(21);
+__webpack_require__(14);
 
-var _appLayout = __webpack_require__(7);
+var _appLayout = __webpack_require__(8);
 
 var _appLayout2 = _interopRequireDefault(_appLayout);
 
@@ -251,6 +175,82 @@ var HelloWorld = function (_Component) {
 exports.default = HelloWorld;
 
 /***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = function () {
+    // see https://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
+    var origPrepareStackTrace = Error.prepareStackTrace;
+    Error.prepareStackTrace = function (_, stack) { return stack; };
+    var stack = (new Error()).stack;
+    Error.prepareStackTrace = origPrepareStackTrace;
+    return stack[2].getFileName();
+};
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var path = __webpack_require__(1);
+var parse = path.parse || __webpack_require__(17);
+
+module.exports = function nodeModulesPaths(start, opts) {
+    var modules = opts && opts.moduleDirectory
+        ? [].concat(opts.moduleDirectory)
+        : ['node_modules']
+    ;
+
+    // ensure that `start` is an absolute path at this point,
+    // resolving against the process' current working directory
+    var absoluteStart = path.resolve(start);
+
+    var prefix = '/';
+    if (/^([A-Za-z]:)/.test(absoluteStart)) {
+        prefix = '';
+    } else if (/^\\\\/.test(absoluteStart)) {
+        prefix = '\\\\';
+    }
+
+    var paths = [absoluteStart];
+    var parsed = parse(absoluteStart);
+    while (parsed.dir !== paths[paths.length - 1]) {
+        paths.push(parsed.dir);
+        parsed = parse(parsed.dir);
+    }
+
+    var dirs = paths.reduce(function (dirs, aPath) {
+        return dirs.concat(modules.map(function (moduleDir) {
+            return path.join(prefix, aPath, moduleDir);
+        }));
+    }, []);
+
+    return opts && opts.paths ? dirs.concat(opts.paths) : dirs;
+};
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+            let config = {
+    "proxy": "arc-react/proxy",
+    "default": "desktop"
+};
+            let proxy = __webpack_require__(15);
+            let resourcePath = '/Users/conchang/Documents/ebay/git/ADAPTIVE/arc-react-webpack-demo/src/components/app-layout/index.arc';
+            let getBestMatch = __webpack_require__(16).getBestMatch;
+            let matches = [{ exports:__webpack_require__(13), flags:["mobile"]},{ exports:__webpack_require__(12), flags:[]}];
+
+            function requireAdapted(flags) {
+                return getBestMatch(matches, flags).exports;
+            }
+
+            module.exports = proxy(requireAdapted, config);
+        
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -265,11 +265,11 @@ var _arcResolver = __webpack_require__(23);
 
 var _arcResolver2 = _interopRequireDefault(_arcResolver);
 
-var _appLayout = __webpack_require__(7);
+var _appLayout = __webpack_require__(8);
 
 var _appLayout2 = _interopRequireDefault(_appLayout);
 
-var _basePage = __webpack_require__(17);
+var _basePage = __webpack_require__(10);
 
 var _basePage2 = _interopRequireDefault(_basePage);
 
@@ -354,6 +354,165 @@ exports.default = router;
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var basePage = function basePage(props) {
+    return "\n    <!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no\">\n\n            <title>" + props.title + "</title>\n\n            <link rel=\"stylesheet\" href=\"" + props.outputPath + "/style.css\">\n        </head>\n        <body>\n            <div id=\"main-content\">" + props.appHtml + "</div>\n\n            <script>\n                window.__INITIAL_STATE__ = " + JSON.stringify(props.initialState) + "\n            </script>\n            <script src=\"" + props.outputPath + "/client.bundle.js\"></script>\n        </body>\n    </html>\n    ";
+};
+
+exports.default = basePage;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(4);
+
+var _express2 = _interopRequireDefault(_express);
+
+var _router = __webpack_require__(9);
+
+var _router2 = _interopRequireDefault(_router);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = (0, _express2.default)();
+
+app.use('/DIST', _express2.default.static('./DIST'));
+
+app.use('/', _router2.default);
+
+app.listen(2222, function () {
+	console.log('Listening on port 2222!');
+});
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _helloWorld = __webpack_require__(5);
+
+var _helloWorld2 = _interopRequireDefault(_helloWorld);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DesktopLayout = function (_Component) {
+    _inherits(DesktopLayout, _Component);
+
+    function DesktopLayout() {
+        _classCallCheck(this, DesktopLayout);
+
+        return _possibleConstructorReturn(this, (DesktopLayout.__proto__ || Object.getPrototypeOf(DesktopLayout)).apply(this, arguments));
+    }
+
+    _createClass(DesktopLayout, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'app-layout' },
+                'This is the DESKTOP version of app-layout!',
+                _react2.default.createElement(_helloWorld2.default, null)
+            );
+        }
+    }]);
+
+    return DesktopLayout;
+}(_react.Component);
+
+exports.default = DesktopLayout;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _helloWorld = __webpack_require__(5);
+
+var _helloWorld2 = _interopRequireDefault(_helloWorld);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MobileLayout = function (_Component) {
+    _inherits(MobileLayout, _Component);
+
+    function MobileLayout() {
+        _classCallCheck(this, MobileLayout);
+
+        return _possibleConstructorReturn(this, (MobileLayout.__proto__ || Object.getPrototypeOf(MobileLayout)).apply(this, arguments));
+    }
+
+    _createClass(MobileLayout, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'app-layout' },
+                'This is the MOBILE version of app-layout!',
+                _react2.default.createElement(_helloWorld2.default, null)
+            );
+        }
+    }]);
+
+    return MobileLayout;
+}(_react.Component);
+
+exports.default = MobileLayout;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var React = __webpack_require__(0);
 var PropTypes = __webpack_require__(25);
 
@@ -377,12 +536,12 @@ module.exports = function (requireAdapted, config) {
 }
 
 /***/ }),
-/* 11 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fs = __webpack_require__(3);
 var path = __webpack_require__(1);
-var resolve = __webpack_require__(13);
+var resolve = __webpack_require__(18);
 var directoryListings = {};
 var fileMatches = {};
 var configs = {};
@@ -570,7 +729,7 @@ function getBestMatch(matches, flags) {
 
 
 /***/ }),
-/* 12 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -670,28 +829,28 @@ module.exports.win32 = win32.parse;
 
 
 /***/ }),
-/* 13 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
-var async = __webpack_require__(14);
+var async = __webpack_require__(19);
 async.core = core;
 async.isCore = function isCore(x) { return core[x]; };
-async.sync = __webpack_require__(16);
+async.sync = __webpack_require__(21);
 
 exports = async;
 module.exports = async;
 
 
 /***/ }),
-/* 14 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
 var fs = __webpack_require__(3);
 var path = __webpack_require__(1);
-var caller = __webpack_require__(5);
-var nodeModulesPaths = __webpack_require__(6);
+var caller = __webpack_require__(6);
+var nodeModulesPaths = __webpack_require__(7);
 
 module.exports = function resolve(x, options, callback) {
     var cb = callback;
@@ -893,7 +1052,7 @@ module.exports = function resolve(x, options, callback) {
 
 
 /***/ }),
-/* 15 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -945,14 +1104,14 @@ module.exports = {
 };
 
 /***/ }),
-/* 16 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(2);
 var fs = __webpack_require__(3);
 var path = __webpack_require__(1);
-var caller = __webpack_require__(5);
-var nodeModulesPaths = __webpack_require__(6);
+var caller = __webpack_require__(6);
+var nodeModulesPaths = __webpack_require__(7);
 
 module.exports = function (x, options) {
     if (typeof x !== 'string') {
@@ -1038,165 +1197,6 @@ module.exports = function (x, options) {
     }
 };
 
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var basePage = function basePage(props) {
-    return "\n    <!DOCTYPE html>\n    <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no\">\n\n            <title>" + props.title + "</title>\n\n            <link rel=\"stylesheet\" href=\"" + props.outputPath + "/style.css\">\n        </head>\n        <body>\n            <div id=\"main-content\">" + props.appHtml + "</div>\n\n            <script>\n                window.__INITIAL_STATE__ = " + JSON.stringify(props.initialState) + "\n            </script>\n            <script src=\"" + props.outputPath + "/client.bundle.js\"></script>\n        </body>\n    </html>\n    ";
-};
-
-exports.default = basePage;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _express = __webpack_require__(4);
-
-var _express2 = _interopRequireDefault(_express);
-
-var _router = __webpack_require__(9);
-
-var _router2 = _interopRequireDefault(_router);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = (0, _express2.default)();
-
-app.use('/DIST', _express2.default.static('./DIST'));
-
-app.use('/', _router2.default);
-
-app.listen(2222, function () {
-	console.log('Listening on port 2222!');
-});
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _helloWorld = __webpack_require__(8);
-
-var _helloWorld2 = _interopRequireDefault(_helloWorld);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var DesktopLayout = function (_Component) {
-    _inherits(DesktopLayout, _Component);
-
-    function DesktopLayout() {
-        _classCallCheck(this, DesktopLayout);
-
-        return _possibleConstructorReturn(this, (DesktopLayout.__proto__ || Object.getPrototypeOf(DesktopLayout)).apply(this, arguments));
-    }
-
-    _createClass(DesktopLayout, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'app-layout' },
-                'This is the DESKTOP version of app-layout!',
-                _react2.default.createElement(_helloWorld2.default, null)
-            );
-        }
-    }]);
-
-    return DesktopLayout;
-}(_react.Component);
-
-exports.default = DesktopLayout;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _helloWorld = __webpack_require__(8);
-
-var _helloWorld2 = _interopRequireDefault(_helloWorld);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var MobileLayout = function (_Component) {
-    _inherits(MobileLayout, _Component);
-
-    function MobileLayout() {
-        _classCallCheck(this, MobileLayout);
-
-        return _possibleConstructorReturn(this, (MobileLayout.__proto__ || Object.getPrototypeOf(MobileLayout)).apply(this, arguments));
-    }
-
-    _createClass(MobileLayout, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'app-layout' },
-                'This is the MOBILE version of app-layout!',
-                _react2.default.createElement(_helloWorld2.default, null)
-            );
-        }
-    }]);
-
-    return MobileLayout;
-}(_react.Component);
-
-exports.default = MobileLayout;
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 22 */
