@@ -1,5 +1,4 @@
 # ARC React Webpack Demo
-**context-demo branch**
 
 An adaptive web application demo supporting all devices built using [ARC](https://github.com/mlrawlings/arc)!
 
@@ -14,7 +13,7 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
 ---
 
 ### Try it out!
-1. Clone or fork `context-demo`
+1. Clone or fork `arc-react-webpack-demo`
 2. Run `yarn` to install packages
 3. Run `webpack` to generate bundles 
     - (I committed the generated `DIST/` folder so you can view the generated structure, otherwise I'd add it to `.gitignore`)
@@ -43,9 +42,9 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
 - **Split CSS due to device size, branding, context:** `color-changing/`
     - Can add any combination of flags to match against based on device type, brand, locale, etc
     - Shared CSS can be put at top level and also required in the template file
-- **Component only used in one device type:** `breadcrumbs`
+- **Component only used in one device type:** `breadcrumbs/`
     - Example of something more typical in desktop and less commonly used in mobile context
-- **Specific branded image/style by device:** `share`
+- **Specific branded image/style by device:** `share/`
     - Different icons are quickly recognizable to users of different devices
     
 ---
