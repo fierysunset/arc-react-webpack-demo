@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './breadcrumbs.css';
+import './breadcrumbs.scss';
 
 export default class Breadcrumbs extends Component {
     render() {

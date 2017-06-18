@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './color-changing.css';
-import './style/color-changing.css';
+import './color-changing.scss';
+import './style/color-changing.scss';
 
 export default class ColorChanging extends Component {
     render() {

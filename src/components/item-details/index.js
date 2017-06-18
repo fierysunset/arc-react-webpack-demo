@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/item-details.css';
+import './style/item-details.scss';
 
 export default class ItemDetails extends Component {
     render() {

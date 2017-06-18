@@ -521,7 +521,7 @@ exports.default = Share;
 /* 12 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+
 
 /***/ }),
 /* 13 */
@@ -1430,79 +1430,130 @@ exports.default = Header;
 /* 26 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"app-layout": "_3Z6UbecM9JEW8aCPs7do64",
+	"main-content": "_1KE7pCoqpvWPqbuEsGyvMg",
+	"column": "Tq-dOt82MYeEzSh8L5eKl",
+	"item-details-container": "_2-epcyg7rcOHSkq3l_XcPr",
+	"image-col": "_2XhssX5NfgvBcNf7E9w0ZZ",
+	"details": "_2qznOIs2gmo8iK9jWTiFXA",
+	"flex1": "_2KvQ0lxGaYCuhucbkEJS1E",
+	"mid-col": "gFqX3j-r7t8h-pebQu9yq",
+	"wireframe": "_45fhseX8Ldzx1wmdPUhX0"
+};
 
 /***/ }),
 /* 27 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"app-layout": "_1WsKGINMeFwECOtNXTQ6GU"
+};
 
 /***/ }),
 /* 28 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"breadcrumbs": "_2T7s5Rn5puYsLSMqjOOCZj"
+};
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"color-changing": "_155lQ0VVHmFeYD6XpBqvlJ",
+	"color-text": "_1y5Dxd4MO3ar5opSxmxawB",
+	"device-type": "cDxw4bXgGkYg_KyFTGkFj"
+};
 
 /***/ }),
 /* 30 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"color-changing": "_2g4TQlkQx09F0RPMj7rz5w",
+	"color-text": "_2Pd66xodTk9CVLOqRy0y_8",
+	"device-type": "_3X4lk-2mE28rF7VoMDGpwP"
+};
 
 /***/ }),
 /* 31 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"ebay-logo": "_2ZkSqxwM_y76OYsF83sbRe",
+	"header": "_3wKL1NCRCJuL4xvOk3MFuo"
+};
 
 /***/ }),
 /* 32 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"ebay-logo": "_1sEE3QGZCfdox7rO6tElpH",
+	"header": "_1s-yDoM53SqQPyWloSH_nc",
+	"icon-container": "Y07S0LDhHVwPf98ewIslk",
+	"icon-button": "_3qolwoyA-Ki0vGgMG5bFJI",
+	"icon-search": "_3KX50W1HqG0uEOqH__mgSB",
+	"icon-profile": "_2RgVpJCLH5ReWGfOoiv8Jh",
+	"icon-shopcart": "_10KDUYNN4yTPwdlV8abbY-",
+	"hide": "cUqEogtHAHyQdtMufcXdC",
+	"search-overlay": "_1wqUsf6Bz2pl62ukpbGc5E",
+	"icon-search-white": "_3f-ThPYjOjpE-DmQ8iqTme",
+	"cancel": "_2HyVxlIXoXNhRInVkRUnET",
+	"search-row": "_2AXodc2HB0FfaQUV31pLJ5"
+};
 
 /***/ }),
 /* 33 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"image-container": "_22K5JnyWw6a5ve2F3fNtaU"
+};
 
 /***/ }),
 /* 34 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"item-actions": "MLsO7khUx0AbGMGaeCTUD"
+};
 
 /***/ }),
 /* 35 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"item-details": "_1dp_FM6fmXfqwD9A9ybssl"
+};
 
 /***/ }),
 /* 36 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"item-title": "O-gANBm6q_zuzxtNB_hy7"
+};
 
 /***/ }),
 /* 37 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"seller-details": "_49LzCG5K3u_KrmSxsilHU"
+};
 
 /***/ }),
 /* 38 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {
+	"share-container": "_3cNDDS7nKf6t_OYaOtJFyH",
+	"share-icon": "z1lvNInueH8wYJoqXsP77"
+};
 
 /***/ }),
 /* 39 */

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/image.css';
+import './style/image.scss';
 
 export default class Image extends Component {
     render() {

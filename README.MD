@@ -54,10 +54,4 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
 - Anytime you split resources into folders, you need an `index.arc` at the top level of the component
 - The `index.arc` proxy config requires a default flag
 - Make sure to update flagsets accordingly in `webpack.config.babel.js` for any combinations you want to adapt for
-- All adapting starts from a default file (e.g `index.js`, `style.css`) so you can't skip having one
-
----
-
-_Note! I intentionally kept the package dependencies minimal in this demo to help with quickest understanding of ARC usage but you can definitely add a webpack dev server, CSS preprocessor, hot reloading, etc etc to make your life easier._
-
-_Apologies for skipping some general frontend best practices as I built this in a bit of a rush ;)_
+- All adapting starts from a default file (e.g `index.js`, `style.scss`) so you can't skip having one

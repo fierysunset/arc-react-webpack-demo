@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/share.css';
+import './style/share.scss';
 
 export default class Share extends Component {
     render() {
