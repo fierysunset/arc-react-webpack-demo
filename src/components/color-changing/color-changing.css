@@ -1,0 +1,12 @@
+.color-changing {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin-top: 10px;
+    padding: 15px;
+    width: 100%;
+}
+
+.color-text:after,
+.device-type:after {
+    font-weight: bold;
+}

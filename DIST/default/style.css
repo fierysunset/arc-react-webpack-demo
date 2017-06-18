@@ -1,6 +1,29 @@
 .breadcrumbs {
     font-size: 12px;
     margin-bottom: 15px;
+}.color-changing {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin-top: 10px;
+    padding: 15px;
+    width: 100%;
+}
+
+.color-text:after,
+.device-type:after {
+    font-weight: bold;
+}
+.color-changing {
+    border: 1px solid lightgray;
+    color: red;
+}
+
+.color-text:after {
+    content: 'red';
+}
+
+.device-type:after {
+    content: 'desktop';
 }.ebay-logo {
     clip: rect(47px, 118px, 95px, 0px);
     height: 95px;
@@ -42,7 +65,9 @@ button {
 
 .image-container img {
     width: 100%;
-}.item-actions {
+}
+
+.item-actions {
     width: 150px;
 }
 
@@ -119,7 +144,7 @@ button {
 .wireframe {
     border: 1px solid #eeeeee;
     height: 250px;
-    margin-top: 20px;
+    margin: 10px 0;
     /* Diagonal stripes */
     background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);
 }

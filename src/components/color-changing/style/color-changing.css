@@ -1,0 +1,12 @@
+.color-changing {
+    border: 1px solid lightgray;
+    color: red;
+}
+
+.color-text:after {
+    content: 'red';
+}
+
+.device-type:after {
+    content: 'desktop';
+}

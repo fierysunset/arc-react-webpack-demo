@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ColorChanging from 'components/color-changing';
 import Header from 'components/header';
 import Image from 'components/image';
 import ItemActions from 'components/item-actions';
@@ -18,6 +19,7 @@ export default class AppLayout extends Component {
                 <ItemDetails/>
                 <ItemActions/>
                 <SellerDetails/>
+                <ColorChanging/>
             </div>
         );
     }
