@@ -55,3 +55,6 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
 - The `index.arc` proxy config requires a default flag
 - Make sure to update flagsets accordingly in `webpack.config.babel.js` for any combinations you want to adapt for
 - All adapting starts from a default file (e.g `index.js`, `style.scss`) so you can't skip having one
+- If you need to adapt a CSS resource, import it in a JS file - CSS @imports will not get adapted
+- File matches are sorted by highest specificity (the most matches in the period delimited path) and alphabetically
+- Be careful not to get too ambitious with too much specializing, as it will be hard for you to maintain which file you need to load when
