@@ -5,7 +5,7 @@ export default class Share extends Component {
     render() {
         return (
             <div className="share-container">
-                <a href="#"><span className="share-icon"/></a>
+                <a href="#"><span className="share-icon" title="share icon"/></a>
                 Share this item! 
             </div>
         );

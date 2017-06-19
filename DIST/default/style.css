@@ -40,8 +40,9 @@
   border: 1px solid lightgray;
   background-color: white; }
 
-.image-container img {
-  width: 100%; }
+.item-image {
+  width: 100%;
+  content: url("http://i.ebayimg.com/images/g/9aYAAOSwoydWsbPg/s-l1600.jpg"); }
 .item-actions {
   width: 150px; }
 
@@ -139,4 +140,4 @@ body {
   height: 200px;
   margin: 10px 0;
   /* Diagonal stripes */
-  background: repeating-linear-gradient(45deg, lightgray, white 20px, lightgray 5px); }
+  background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px); }
