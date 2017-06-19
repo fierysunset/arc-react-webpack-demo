@@ -2,7 +2,7 @@
 
 An adaptive web application demo supporting all devices built using [ARC](https://github.com/mlrawlings/arc)!
 
-The demo is a rough representation of eBay's View Item page (as of June 2017).
+The UI shown in the demo is a rough representation of eBay's View Item page (as of June 2017).
 
 ### Table of contents
 [Try it out!](#try-it-out)  
@@ -19,6 +19,7 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
     - (I committed the generated `DIST/` folder so you can view the generated structure, otherwise I'd add it to `.gitignore`)
 4. `yarn start` to start your server
 5. Navigate to http://localhost:2222 to view the app in any device (Chrome Developer Tools' Device Toolbar is an easy way to see the adaptive functionality in action)
+6. Add `/cornify` at the end of the URL if you need more rainbows and sparkles in your life...
 
 ---
 
@@ -46,6 +47,9 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
     - Example of something more typical in desktop and less commonly used in mobile context
 - **Specific branded image/style by device:** `share/`
     - Different icons are quickly recognizable to users of different devices
+- **Different themes to apply across the page:** `src/style/base.*.scss`
+    - Needs to be imported at top level in JS
+    - `variables.*.scss` is an example of theme related variables that can be imported in component CSS files, e.g `image/style/image.*.scss`
     
 ---
 
@@ -55,3 +59,6 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
 - The `index.arc` proxy config requires a default flag
 - Make sure to update flagsets accordingly in `webpack.config.babel.js` for any combinations you want to adapt for
 - All adapting starts from a default file (e.g `index.js`, `style.scss`) so you can't skip having one
+- If you need to adapt a CSS resource, import it in a JS file - CSS @imports will not get adapted
+- File matches are sorted by highest specificity (the most matches in the period delimited path) and alphabetically
+- Be careful not to get too ambitious with too much specializing, as it will be hard for you to maintain which file you need to load when
