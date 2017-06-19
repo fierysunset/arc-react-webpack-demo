@@ -1,0 +1,21 @@
+@import 'src/style/variables.scss';
+
+body {
+    font-family: Helvetica, sans-serif;
+    background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg");
+}
+
+button {
+    background-color: #0654ba;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 40px;
+}
+
+input {
+    border: $lineWidth $lineStyle $lineColor;
+    font-size: 16px;
+    height: 40px;
+}

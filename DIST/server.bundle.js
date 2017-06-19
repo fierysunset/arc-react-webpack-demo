@@ -1483,8 +1483,8 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = {
-	"ebay-logo": "_2ZkSqxwM_y76OYsF83sbRe",
-	"header": "_3wKL1NCRCJuL4xvOk3MFuo"
+	"header": "_3wKL1NCRCJuL4xvOk3MFuo",
+	"ebay-logo": "_2ZkSqxwM_y76OYsF83sbRe"
 };
 
 /***/ }),
@@ -1492,18 +1492,18 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = {
-	"ebay-logo": "_1sEE3QGZCfdox7rO6tElpH",
 	"header": "_1s-yDoM53SqQPyWloSH_nc",
+	"ebay-logo": "_1sEE3QGZCfdox7rO6tElpH",
 	"icon-container": "Y07S0LDhHVwPf98ewIslk",
-	"icon-button": "_3qolwoyA-Ki0vGgMG5bFJI",
 	"icon-search": "_3KX50W1HqG0uEOqH__mgSB",
 	"icon-profile": "_2RgVpJCLH5ReWGfOoiv8Jh",
 	"icon-shopcart": "_10KDUYNN4yTPwdlV8abbY-",
+	"icon-button": "_3qolwoyA-Ki0vGgMG5bFJI",
 	"hide": "cUqEogtHAHyQdtMufcXdC",
 	"search-overlay": "_1wqUsf6Bz2pl62ukpbGc5E",
-	"icon-search-white": "_3f-ThPYjOjpE-DmQ8iqTme",
 	"cancel": "_2HyVxlIXoXNhRInVkRUnET",
-	"search-row": "_2AXodc2HB0FfaQUV31pLJ5"
+	"search-row": "_2AXodc2HB0FfaQUV31pLJ5",
+	"icon-search-white": "_3f-ThPYjOjpE-DmQ8iqTme"
 };
 
 /***/ }),

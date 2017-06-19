@@ -1,5 +1,7 @@
+@import 'src/style/variables.scss';
+
 .image-container {
-    border: 1px solid lightgray;
+    border: $lineWidth $lineStyle $lineColor;
     background-color: white;
 }
 

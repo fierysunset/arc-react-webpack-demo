@@ -1,6 +1,8 @@
+@import 'src/style/variables.scss';
+
 .image-container {
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: $lineWidth $lineStyle $lineColor;
+    border-bottom: $lineWidth $lineStyle $lineColor;
     background-color: white;
 }
 

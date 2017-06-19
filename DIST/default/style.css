@@ -18,38 +18,24 @@
 
 .device-type:after {
   content: 'default devices'; }
-.ebay-logo {
-  clip: rect(47px, 118px, 95px, 0px);
-  height: 95px;
-  left: 0;
-  position: absolute;
-  top: -47px;
-  width: 118px; }
-
 .header {
   display: flex;
   height: 70px;
   position: relative; }
-
-input {
-  border: 1px solid #aaa;
-  height: 40px;
-  flex: 1;
-  margin: 5px 5px 0 175px;
-  font-size: 16px;
-  padding: 10px 0 9px 8px; }
-
-button {
-  background-color: #0654ba;
-  border: none;
-  color: #ffffff;
-  font-size: 14px;
-  height: 40px;
-  width: 130px;
-  cursor: pointer; }
-
-.header button {
-  margin-top: 5px; }
+  .header button {
+    margin-top: 5px;
+    width: 130px; }
+  .header .ebay-logo {
+    clip: rect(47px, 118px, 95px, 0px);
+    height: 95px;
+    left: 0;
+    position: absolute;
+    top: -47px;
+    width: 118px; }
+  .header input {
+    flex: 1;
+    margin: 5px 5px 0 175px;
+    padding: 10px 0 9px 8px; }
 .image-container {
   border: 1px solid lightgray;
   background-color: white; }
@@ -91,6 +77,23 @@ h4 {
   content: url("http://blog.agilebits.com/wp-content/uploads/2013/05/share-transparent.png");
   width: 20px;
   margin-right: 5px; }
+body {
+  font-family: Helvetica, sans-serif;
+  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+
+button {
+  background-color: #0654ba;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px; }
+
+input {
+  border: 1px solid lightgray;
+  font-size: 16px;
+  height: 40px; }
+
 html {
   box-sizing: border-box; }
 
@@ -98,9 +101,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  margin: 0;
-  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
-  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+  margin: 0; }
 .app-layout {
   max-width: 1250px;
   min-width: 768px;
@@ -134,8 +135,8 @@ body {
   padding: 15px; }
 
 .wireframe {
-  border: 1px solid #eeeeee;
+  border: 1px 1px solid #eeeeee;
   height: 200px;
   margin: 10px 0;
   /* Diagonal stripes */
-  background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px); }
+  background: repeating-linear-gradient(45deg, lightgray, white 20px, lightgray 5px); }

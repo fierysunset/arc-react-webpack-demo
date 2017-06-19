@@ -1,3 +1,5 @@
+@import 'src/style/base.scss';
+
 html {
   box-sizing: border-box;
 }
@@ -7,6 +9,4 @@ html {
 
 body {
     margin: 0;
-    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
-    background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg")
 }

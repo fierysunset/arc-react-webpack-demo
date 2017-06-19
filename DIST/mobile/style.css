@@ -15,17 +15,23 @@
 
 .device-type:after {
   content: 'default devices'; }
-.ebay-logo img {
-  width: 77px;
-  margin: 5px 0 0 5px; }
-
 .header {
   background-color: white;
   display: flex; }
-
-.icon-container {
-  margin-left: auto;
-  margin-right: 5px; }
+  .header .ebay-logo img {
+    width: 77px;
+    margin: 5px 0 0 5px; }
+  .header .icon-container {
+    margin-left: auto;
+    margin-right: 5px; }
+  .header .icon-search {
+    background-position: -31px 0; }
+  .header .icon-profile {
+    background-position: -115px 0; }
+  .header .icon-shopcart {
+    background-position: -986px 0;
+    width: 27px;
+    margin-left: 3px; }
 
 .icon-button {
   background-image: url(http://ir.ebaystatic.com/rs/v/bjsll44fvq5gzelpqzuhsn1mx22.png);
@@ -36,17 +42,6 @@
   margin: 15px 7px 0 7px;
   display: inline-block; }
 
-.icon-search {
-  background-position: -31px 0; }
-
-.icon-profile {
-  background-position: -115px 0; }
-
-.icon-shopcart {
-  background-position: -986px 0;
-  width: 27px;
-  margin-left: 3px; }
-
 .hide {
   display: none; }
 
@@ -56,48 +51,32 @@
   height: 100%;
   background: white;
   top: 0; }
-
-input {
-  border: 1px solid #aaa;
-  line-height: 18px;
-  height: 40px;
-  padding: 0 10px;
-  margin: 10px 0 0 10px;
-  font-size: 16px;
-  flex: 1; }
-
-button {
-  background-color: #0654ba;
-  border: none;
-  color: #ffffff;
-  font-size: 14px;
-  height: 40px;
-  padding: 0 14px 0 10px; }
-
-.search-overlay button {
-  margin: 10px 10px 0 0; }
-
-.icon-search-white {
-  background-position: -1748px -1px;
-  background-size: auto 24px;
-  width: 26px;
-  height: 24px;
-  margin: 0; }
-
-.cancel {
-  margin: 20px 12px 0 0;
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none; }
-
-.search-row,
-input,
-button,
-.cancel {
-  display: flex; }
+  .search-overlay button,
+  .search-overlay .cancel,
+  .search-overlay input,
+  .search-overlay .search-row {
+    display: flex; }
+  .search-overlay button {
+    padding: 0 14px 0 10px;
+    margin: 10px 10px 0 0; }
+  .search-overlay .cancel {
+    margin: 20px 12px 0 0;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none; }
+  .search-overlay .icon-search-white {
+    background-position: -1748px -1px;
+    background-size: auto 24px;
+    width: 26px;
+    height: 24px;
+    margin: 0; }
+  .search-overlay input {
+    padding: 0 10px;
+    margin: 10px 0 0 10px;
+    flex: 1; }
 .image-container {
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   background-color: white; }
 
 .image-container img {
@@ -137,6 +116,23 @@ h4 {
   content: url("http://blog.agilebits.com/wp-content/uploads/2013/05/share-transparent.png");
   width: 20px;
   margin-right: 5px; }
+body {
+  font-family: Helvetica, sans-serif;
+  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+
+button {
+  background-color: #0654ba;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px; }
+
+input {
+  border: 1px solid lightgray;
+  font-size: 16px;
+  height: 40px; }
+
 html {
   box-sizing: border-box; }
 
@@ -144,9 +140,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  margin: 0;
-  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
-  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+  margin: 0; }
 body {
   font-size: 14px; }
 

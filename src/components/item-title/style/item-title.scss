@@ -1,5 +1,7 @@
+@import 'src/style/variables.scss';
+
 .item-title {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px $lineStyle $lineColor;
     margin: 0 0 20px 0;
     padding: 5px 15px;
 }
