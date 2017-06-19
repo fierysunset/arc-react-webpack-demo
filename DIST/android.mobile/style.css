@@ -79,8 +79,9 @@
   border-bottom: 1px solid lightgray;
   background-color: white; }
 
-.image-container img {
-  width: 100%; }
+.item-image {
+  width: 100%;
+  content: url("http://i.ebayimg.com/00/s/NzY4WDgyOQ==/z/9aYAAOSwoydWsbPg/$_1.JPG"); }
 .item-actions {
   padding: 0 10px; }
 

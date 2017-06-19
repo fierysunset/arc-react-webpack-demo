@@ -44,5 +44,5 @@
     height: 200px;
     margin: 10px 0;
     /* Diagonal stripes */
-    background: repeating-linear-gradient(45deg, $lineColor, white 20px, $lineColor 5px);
+    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, $lineColor 5px);
 }

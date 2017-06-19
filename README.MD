@@ -38,7 +38,7 @@ The demo is a rough representation of eBay's View Item page (as of June 2017).
 - **Split JS due to difference in functionality:** `header/`
     - Due to less available space, mobile web exposes the search bar in a full page overlay, which is accessible by clicking the search icon button at top right
 - **Different image sizes to decrease page weight when possible:** `image/`
-    - Mobile can load a smaller size version of the same image since it doesn't need one as large as the desktop would
+    - Mobile can load a smaller size version of the same image since it doesn't need one as large as larger screens would
 - **Split CSS due to device size, branding, context:** `color-changing/`
     - Can add any combination of flags to match against based on device type, brand, locale, etc
     - Shared CSS can be put at top level and also required in the template file

@@ -10117,7 +10117,7 @@ var Image = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'image-container' },
-                _react2.default.createElement('img', { src: 'http://i.ebayimg.com/00/s/NzY4WDgyOQ==/z/9aYAAOSwoydWsbPg/$_1.JPG' })
+                _react2.default.createElement('div', { className: 'item-image', title: 'image of stuffed husky' })
             );
         }
     }]);
@@ -10405,7 +10405,7 @@ var Share = function (_Component) {
                 _react2.default.createElement(
                     'a',
                     { href: '#' },
-                    _react2.default.createElement('span', { className: 'share-icon' })
+                    _react2.default.createElement('span', { className: 'share-icon', title: 'share icon' })
                 ),
                 'Share this item!'
             );
