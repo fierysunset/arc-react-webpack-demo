@@ -50,7 +50,8 @@
   width: 100%;
   height: 100%;
   background: white;
-  top: 0; }
+  top: 0;
+  z-index: 1; }
   .search-overlay button,
   .search-overlay .cancel,
   .search-overlay input,
@@ -58,7 +59,8 @@
     display: flex; }
   .search-overlay button {
     padding: 0 14px 0 10px;
-    margin: 10px 10px 0 0; }
+    margin: 10px 10px 0 0;
+    width: 50px; }
   .search-overlay .cancel {
     margin: 20px 12px 0 0;
     font-size: 15px;
