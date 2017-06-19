@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Breadcrumbs from 'components/breadcrumbs';
 import ColorChanging from 'components/color-changing';
+import CornifyButton from 'components/cornify-button';
 import Header from 'components/header';
 import Image from 'components/image';
 import ItemActions from 'components/item-actions';
@@ -10,6 +11,7 @@ import SellerDetails from 'components/seller-details';
 import Share from 'components/share';
 import '../app-layout.scss';
 import './app-layout.scss';
+import '../../../style/base.scss';
 
 export default class AppLayout extends Component {
     render() {
@@ -37,7 +39,7 @@ export default class AppLayout extends Component {
 
                                 <div className="wireframe"></div>
                             </div>
-                            <div className="column">
+                            <div className="column right-col">
                                 <SellerDetails/>
                             </div>
                         </div>

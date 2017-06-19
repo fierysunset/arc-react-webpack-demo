@@ -41,15 +41,21 @@
     margin: 5px 5px 0 175px;
     padding: 10px 0 9px 8px; }
 .image-container {
-  border: 1px solid lightgray;
-  background-color: white; }
+  border: 3px dashed hotpink;
+  background-color: white;
+  position: relative; }
 
 .item-image {
   width: 100%;
   content: url("http://i.ebayimg.com/images/g/9aYAAOSwoydWsbPg/s-l1600.jpg"); }
 
 .sunglasses {
-  display: none; }
+  position: absolute;
+  top: 46%;
+  left: 12%;
+  width: 33%;
+  transform: rotate(-7deg);
+  content: url("https://cdn.pixabay.com/photo/2014/04/02/10/56/sunglasses-304998__340.png"); }
 .item-actions {
   width: 150px; }
 
@@ -72,7 +78,7 @@ h4 {
   font-size: 14px;
   line-height: 1.3;
   background-color: white;
-  border: 1px solid lightgray;
+  border: 3px dashed hotpink;
   padding: 15px;
   width: 200px;
   height: 200px; }
@@ -135,18 +141,24 @@ body {
   /* Diagonal stripes */
   background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px); }
 body {
-  font-family: Helvetica, sans-serif;
-  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', sans-serif;
+  background-image: url("http://68.media.tumblr.com/tumblr_m9pfohG1fK1rc7pm9o1_500.gif"); }
 
 input {
-  border: 1px solid lightgray;
+  border: 3px dashed hotpink;
   font-size: 16px;
   height: 40px; }
 
 button {
-  background-color: #0654ba;
-  border: none;
   color: #ffffff;
   cursor: pointer;
   font-size: 14px;
-  height: 40px; }
+  height: 40px;
+  width: 130px;
+  box-shadow: #e184f3 0px 1px 0px 0px inset;
+  background: linear-gradient(#c123de 5%, #a20dbd 100%) #c123de;
+  border-radius: 6px;
+  border: 1px solid #a511c0;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', sans-serif;
+  font-weight: bold;
+  text-shadow: #9b14b3 0px 1px 0px; }

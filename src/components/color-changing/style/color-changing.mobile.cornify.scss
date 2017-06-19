@@ -1,0 +1,11 @@
+.color-changing {
+    color: purple;
+}
+
+.color-text:after {
+    content: 'purple';
+}
+
+.device-type:after {
+    content: 'corny mobile devices';
+}

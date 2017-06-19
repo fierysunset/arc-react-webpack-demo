@@ -82,6 +82,9 @@
 .item-image {
   width: 100%;
   content: url("http://i.ebayimg.com/00/s/NzY4WDgyOQ==/z/9aYAAOSwoydWsbPg/$_1.JPG"); }
+
+.sunglasses {
+  display: none; }
 .item-actions {
   padding: 0 10px; }
 
@@ -117,23 +120,6 @@ h4 {
   content: url("http://blog.agilebits.com/wp-content/uploads/2013/05/share-transparent.png");
   width: 20px;
   margin-right: 5px; }
-body {
-  font-family: Helvetica, sans-serif;
-  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
-
-button {
-  background-color: #0654ba;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 14px;
-  height: 40px; }
-
-input {
-  border: 1px solid lightgray;
-  font-size: 16px;
-  height: 40px; }
-
 html {
   box-sizing: border-box; }
 
@@ -147,3 +133,19 @@ body {
 
 .app-layout {
   min-width: 320px; }
+body {
+  font-family: Helvetica, sans-serif;
+  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+
+input {
+  border: 1px solid lightgray;
+  font-size: 16px;
+  height: 40px; }
+
+button {
+  background-color: #0654ba;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px; }

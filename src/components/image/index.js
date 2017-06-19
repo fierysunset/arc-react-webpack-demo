@@ -8,6 +8,8 @@ export default class Image extends Component {
                 {/* To be replaced by CSS according to device size */}
                 {/* Title added for accessibiity purposes (instead of img alt tag) */}
                 <div className="item-image" title="image of stuffed husky"></div>
+
+                <div className="sunglasses"></div>
             </div>
         );
     }

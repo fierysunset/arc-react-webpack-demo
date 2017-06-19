@@ -1,0 +1,21 @@
+@import 'src/style/variables.cornify.scss';
+
+.image-container {
+    border: $lineWidth $lineStyle $lineColor;
+    background-color: white;
+    position: relative;
+}
+
+.item-image {
+    width: 100%;
+    content: url('http://i.ebayimg.com/images/g/9aYAAOSwoydWsbPg/s-l1600.jpg');
+}
+
+.sunglasses {
+    position: absolute;
+    top: 46%;
+    left: 12%;
+    width: 33%;
+    transform: rotate(-7deg);
+    content: url('https://cdn.pixabay.com/photo/2014/04/02/10/56/sunglasses-304998__340.png');
+}

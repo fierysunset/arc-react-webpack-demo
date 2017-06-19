@@ -44,7 +44,6 @@ const getOutputPath = (flags) => {
 
 router.get('*', function (req, res) {
 	let flags = getFlags(req);
-	const outputPath = getOutputPath(flags);
 	const initialState = {};
 	const reqUrl = req.url;
 
@@ -55,6 +54,7 @@ router.get('*', function (req, res) {
 		flags = flags.concat(urlFlags);
 	}
 
+	const outputPath = getOutputPath(flags);
 	const appHtml = ReactDOMServer.renderToString(
 		<FlagProvider flags={flags}>
 			<AppLayout initialState={initialState}/>

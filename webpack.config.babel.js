@@ -12,7 +12,8 @@ const flagset = [
     ['mobile', 'iphone'],
     ['mobile', 'android'],
     ['desktop'],
-    ['cornify']
+    ['cornify'],
+    ['cornify', 'mobile']
 ];
 
 const clientConfig = (...flags) => ({
@@ -40,7 +41,7 @@ const clientConfig = (...flags) => ({
                 use: 'css-loader!sass-loader',
                 fallback: 'style-loader'
             }),
-            include: path.join(__dirname, 'src/components')
+            include: path.join(__dirname, 'src')
         }]
     },
     plugins: [
@@ -68,7 +69,7 @@ const serverConfig = (...flags) => ({
         {
             test: /\.scss$/,
             loader: 'css-loader/locals?modules',
-            include: path.join(__dirname, 'src/components')
+            include: path.join(__dirname, 'src')
         },
         {
             test: /\.arc$/,

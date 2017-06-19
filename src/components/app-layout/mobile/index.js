@@ -9,6 +9,7 @@ import SellerDetails from 'components/seller-details';
 import Share from 'components/share';
 import '../app-layout.scss';
 import './app-layout.scss';
+import '../../../style/base.scss';
 
 export default class AppLayout extends Component {
     render() {

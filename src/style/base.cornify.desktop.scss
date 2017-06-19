@@ -1,0 +1,28 @@
+@import 'src/style/variables.cornify.scss';
+
+body {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', sans-serif;
+    background-image: url('http://68.media.tumblr.com/tumblr_m9pfohG1fK1rc7pm9o1_500.gif');
+}
+
+input {
+    border: $lineWidth $lineStyle $lineColor;
+    font-size: 16px;
+    height: 40px;
+}
+
+button {
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 40px;
+    width: 130px;
+    // Purple button
+    box-shadow: rgb(225, 132, 243) 0px 1px 0px 0px inset; 
+    background: linear-gradient(rgb(193, 35, 222) 5%, rgb(162, 13, 189) 100%) rgb(193, 35, 222); 
+    border-radius: 6px; 
+    border: 1px solid rgb(165, 17, 192); 
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', sans-serif;
+    font-weight: bold; 
+    text-shadow: rgb(155, 20, 179) 0px 1px 0px;
+}

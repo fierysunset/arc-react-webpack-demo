@@ -2,7 +2,13 @@
 
 body {
     font-family: Helvetica, sans-serif;
-    background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg");
+    background: url('http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg');
+}
+
+input {
+    border: $lineWidth $lineStyle $lineColor;
+    font-size: 16px;
+    height: 40px;
 }
 
 button {
@@ -11,11 +17,5 @@ button {
     color: #ffffff;
     cursor: pointer;
     font-size: 14px;
-    height: 40px;
-}
-
-input {
-    border: $lineWidth $lineStyle $lineColor;
-    font-size: 16px;
     height: 40px;
 }
