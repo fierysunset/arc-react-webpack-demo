@@ -42,10 +42,18 @@ const getOutputPath = (flags) => {
 	return arcResolver.adaptResource('DIST/default', flags);
 }
 
-router.get('/', function (req, res) {
-	const flags = getFlags(req);
+router.get('*', function (req, res) {
+	let flags = getFlags(req);
 	const outputPath = getOutputPath(flags);
 	const initialState = {};
+	const reqUrl = req.url;
+
+	// Check URL for any additional flags
+	if (reqUrl !== '/') {
+		const pattern = /[a-zA-Z]+/g;
+		const urlFlags = reqUrl.match(pattern);
+		flags = flags.concat(urlFlags);
+	}
 
 	const appHtml = ReactDOMServer.renderToString(
 		<FlagProvider flags={flags}>

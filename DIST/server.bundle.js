@@ -896,10 +896,18 @@ var getOutputPath = function getOutputPath(flags) {
 	return _arcResolver2.default.adaptResource('DIST/default', flags);
 };
 
-router.get('/', function (req, res) {
+router.get('*', function (req, res) {
 	var flags = getFlags(req);
 	var outputPath = getOutputPath(flags);
 	var initialState = {};
+	var reqUrl = req.url;
+
+	// Check URL for any additional flags
+	if (reqUrl !== '/') {
+		var pattern = /[a-zA-Z]+/g;
+		var urlFlags = reqUrl.match(pattern);
+		flags = flags.concat(urlFlags);
+	}
 
 	var appHtml = _server2.default.renderToString(_react2.default.createElement(
 		_arcReact.FlagProvider,
