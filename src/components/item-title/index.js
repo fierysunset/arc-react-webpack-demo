@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/item-title.css';
+import './style/item-title.scss';
 
 export default class ItemTitle extends Component {
     render() {

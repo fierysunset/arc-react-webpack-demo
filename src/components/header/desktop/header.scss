@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    height: 70px;
+    position: relative;
+
+    button {
+        margin-top: 5px;
+        width: 130px;
+    }
+
+    .ebay-logo {
+        clip: rect(47px, 118px, 95px, 0px);
+        height: 95px;
+        left: 0;
+        position: absolute;
+        top: -47px;
+        width: 118px;
+    }
+
+    input {
+        flex: 1;
+        margin: 5px 5px 0 175px;
+        padding: 10px 0 9px 8px;
+    }
+}

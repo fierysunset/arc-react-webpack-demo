@@ -34,9 +34,9 @@ const clientConfig = (...flags) => ({
             include: path.join(__dirname, 'src')
         },
         {
-            test: /\.css$/,
-            use: ExtractTextWebpackPlugin.extract({
-                use: 'css-loader',
+            test: /\.scss$/,
+            loaders: ExtractTextWebpackPlugin.extract({
+                use: 'css-loader!sass-loader',
                 fallback: 'style-loader'
             }),
             include: path.join(__dirname, 'src/components')
@@ -65,8 +65,8 @@ const serverConfig = (...flags) => ({
             include: path.join(__dirname, 'src')
         },
         {
-            test: /\.css$/,
-            use: 'css-loader/locals?modules',
+            test: /\.scss$/,
+            loader: 'css-loader/locals?modules',
             include: path.join(__dirname, 'src/components')
         },
         {

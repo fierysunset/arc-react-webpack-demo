@@ -1,165 +1,143 @@
 .breadcrumbs {
-    font-size: 12px;
-    margin-bottom: 15px;
-}.color-changing {
-    border: 1px solid lightgray;
-    margin-top: 10px;
-    padding: 15px;
-    width: 100%;
-}
+  font-size: 12px;
+  margin-bottom: 15px; }
+.color-changing {
+  border: 1px solid lightgray;
+  margin-top: 10px;
+  padding: 15px;
+  width: 100%; }
 
 .color-text:after,
 .device-type:after {
-    font-weight: bold;
-}
+  font-weight: bold; }
 .color-changing {
-    color: green;
-}
+  color: green; }
 
 .color-text:after {
-    content: 'green';
-}
+  content: 'green'; }
 
 .device-type:after {
-    content: 'default';
-}.ebay-logo {
+  content: 'default devices'; }
+.header {
+  display: flex;
+  height: 70px;
+  position: relative; }
+  .header button {
+    margin-top: 5px;
+    width: 130px; }
+  .header .ebay-logo {
     clip: rect(47px, 118px, 95px, 0px);
     height: 95px;
     left: 0;
     position: absolute;
     top: -47px;
-    width: 118px;
-}
-
-.header {
-    display: flex;
-    height: 70px;
-    position: relative;
-}
-
-input {
-    border: 1px solid #aaa;
-    height: 40px;
+    width: 118px; }
+  .header input {
     flex: 1;
     margin: 5px 5px 0 175px;
-    font-size: 16px;
-    padding: 10px 0 9px 8px;
-}
+    padding: 10px 0 9px 8px; }
+.image-container {
+  border: 1px solid lightgray;
+  background-color: white; }
 
-button {
-    background-color: #0654ba;
-    border: none;
-    color: #ffffff;
-    font-size: 14px;
-    height: 40px;
-    width: 130px;
-    cursor: pointer;
-}
-
-.header button {
-    margin-top: 5px;
-}.image-container {
-    border: 1px solid lightgray;
-    background-color: white;
-}
-
-.image-container img {
-    width: 100%;
-}
-
+.item-image {
+  width: 100%;
+  content: url("http://i.ebayimg.com/images/g/9aYAAOSwoydWsbPg/s-l1600.jpg"); }
 .item-actions {
-    width: 150px;
-}
+  width: 150px; }
 
 .item-actions button {
-    width: 150px;
-    margin-bottom: 10px;
-}.item-details {
-    background-color: #e2e2e2;
-    margin-right: 15px;
-    flex: 1;
-    min-width: 100px;
-}.item-title {
-    border-bottom: 1px solid lightgray;
-    margin: 0 0 20px 0;
-    padding: 5px 15px;
-}h4 {
-    margin: 0 0 3px 0;
-}
+  width: 150px;
+  margin-bottom: 10px; }
+.item-details {
+  background-color: #e2e2e2;
+  margin-right: 15px;
+  flex: 1;
+  min-width: 100px; }
+.item-title {
+  border-bottom: 1px solid lightgray;
+  margin: 0 0 20px 0;
+  padding: 5px 15px; }
+h4 {
+  margin: 0 0 3px 0; }
 
 .seller-details {
-    font-size: 14px;
-    line-height: 1.3;
-    background-color: white;
-    border: 1px solid lightgray;
-    padding: 15px;
-    width: 200px;
-    height: 200px;
-}.share-container {
-    margin-top: 10px;
-    margin-left: 2px;
-    width: 100%;
-}
+  font-size: 14px;
+  line-height: 1.3;
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 15px;
+  width: 200px;
+  height: 200px; }
+.share-container {
+  margin-top: 10px;
+  margin-left: 2px;
+  width: 100%; }
 
 .share-icon {
-    content: url('http://blog.agilebits.com/wp-content/uploads/2013/05/share-transparent.png');
-    width: 20px;
-    margin-right: 5px;
-}
+  content: url("http://blog.agilebits.com/wp-content/uploads/2013/05/share-transparent.png");
+  width: 20px;
+  margin-right: 5px; }
+body {
+  font-family: Helvetica, sans-serif;
+  background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg"); }
+
+button {
+  background-color: #0654ba;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px; }
+
+input {
+  border: 1px solid lightgray;
+  font-size: 16px;
+  height: 40px; }
+
 html {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
+
 *, *:before, *:after {
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 body {
-    margin: 0;
-    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
-    background: url("http://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/imgbg.jpg")
-}.app-layout {
-    max-width: 1250px;
-    min-width: 768px; /* down to tablet size */
-    margin: 0 auto;
-    padding: 8px 20px;
-}
+  margin: 0; }
+.app-layout {
+  max-width: 1250px;
+  min-width: 768px;
+  /* down to tablet size */
+  margin: 0 auto;
+  padding: 8px 20px; }
 
 .main-content, .column, .item-details-container {
-    display: flex;
-}
+  display: flex; }
 
 .image-col {
-    width: 40%;
-    max-width: 430px;
-    align-items: flex-start;
-}
+  width: 40%;
+  max-width: 430px;
+  align-items: flex-start; }
 
 .details {
-    margin-left: 15px;
-}
+  margin-left: 15px; }
 
 .flex1 {
-    flex: 1;
-}
+  flex: 1; }
 
 .mid-col {
-    margin-right: 15px;
-    flex-wrap: wrap;
-}
+  margin-right: 15px;
+  flex-wrap: wrap; }
 
 .mid-col .wireframe {
-    width: 100%;
-}
+  width: 100%; }
 
 .item-details-container {
-    background-color: #e2e2e2;
-    padding: 15px;
-}
+  background-color: #e2e2e2;
+  padding: 15px; }
 
 .wireframe {
-    border: 1px solid #eeeeee;
-    height: 200px;
-    margin: 10px 0;
-    /* Diagonal stripes */
-    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);
-}
+  border: 1px 1px solid #eeeeee;
+  height: 200px;
+  margin: 10px 0;
+  /* Diagonal stripes */
+  background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px); }

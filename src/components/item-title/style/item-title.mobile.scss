@@ -1,0 +1,8 @@
+@import 'src/style/variables.scss';
+
+.item-title {
+    border-bottom: 1px $lineStyle $lineColor;
+    font-size: 20px; 
+    margin: 0;
+    padding: 5px;
+}

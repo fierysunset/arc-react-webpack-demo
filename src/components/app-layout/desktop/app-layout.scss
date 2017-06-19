@@ -1,3 +1,5 @@
+@import 'src/style/variables.scss';
+
 .app-layout {
     max-width: 1250px;
     min-width: 768px; /* down to tablet size */
@@ -38,9 +40,9 @@
 }
 
 .wireframe {
-    border: 1px solid #eeeeee;
+    border: $lineWidth 1px $lineStyle #eeeeee;
     height: 200px;
     margin: 10px 0;
     /* Diagonal stripes */
-    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, lightgray 5px);
+    background: repeating-linear-gradient(45deg, #eeeeee, white 20px, $lineColor 5px);
 }
