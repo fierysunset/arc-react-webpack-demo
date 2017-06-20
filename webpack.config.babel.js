@@ -50,7 +50,7 @@ const clientConfig = (...flags) => ({
     ]
 });
 
-const serverConfig = (...flags) => ({
+const serverConfig = () => ({
     entry: './src/app-server/server',
     resolve: {
         modules: ['node_modules', 'src', path.resolve(__dirname, 'src/components')],
