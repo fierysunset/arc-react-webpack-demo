@@ -9957,7 +9957,7 @@ var ColorChanging = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'color-changing' },
-                'The text here will be ',
+                'This text is ',
                 _react2.default.createElement('span', { className: 'color-text' }),
                 ' in ',
                 _react2.default.createElement('span', { className: 'device-type' })

@@ -42,7 +42,7 @@ const getOutputPath = (flags) => {
 	return arcResolver.adaptResource('DIST/default', flags);
 }
 
-router.get('/', function (req, res) {
+router.get('*', function (req, res) {
 	const flags = getFlags(req);
 	const outputPath = getOutputPath(flags);
 	const initialState = {};
