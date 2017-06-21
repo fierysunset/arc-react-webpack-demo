@@ -13,7 +13,7 @@ const flagset = [
     ['desktop']
 ];
 
-const clientConfig = (...flags) => ({
+const clientConfig = (flags) => ({
     entry: './src/app-client',
     resolve: {
         plugins: [
@@ -73,14 +73,12 @@ const serverConfig = (...flags) => ({
 // Array of webpack configs
 let configArr = [];
 
-const getFlaggedConfigs = () => {
-    flagset.map(flags => {
-        // Client configs
-        configArr.push(clientConfig(...flags));
-        // Server configs
-        configArr.push(serverConfig(...flags));
-    });
-    return configArr;
-}
+// One for the server
+configArr.push(serverConfig());
 
-module.exports = getFlaggedConfigs;
+// And one per flagset for the client
+flagset.map(flags => {
+    configArr.push(clientConfig(flags));
+});
+
+module.exports = configArr;
