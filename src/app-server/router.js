@@ -59,6 +59,8 @@ router.get('*', function (req, res) {
 		outputPath
 	});
 
+	// Add Vary header for managing SEO and HTTP caching 
+ 	res.header('vary', 'user-agent');
 	res.status(200).send(pageHtml);
 });
 
