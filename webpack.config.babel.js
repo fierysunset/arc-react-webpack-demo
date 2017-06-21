@@ -12,8 +12,10 @@ const flagset = [
     ['mobile', 'iphone'],
     ['mobile', 'android'],
     ['desktop'],
-    ['cornify'],
-    ['cornify', 'mobile']
+    ['cornify', 'desktop'],
+    ['cornify', 'mobile'],
+    ['cornify', 'mobile', 'android'],
+    ['cornify', 'mobile', 'iphone']
 ];
 
 const clientConfig = (flags) => ({
