@@ -949,6 +949,7 @@ router.get('*', function (req, res) {
 		outputPath: outputPath
 	});
 
+	res.header('vary', 'user-agent');
 	res.status(200).send(pageHtml);
 });
 
