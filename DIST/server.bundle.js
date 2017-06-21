@@ -896,7 +896,7 @@ var getOutputPath = function getOutputPath(flags) {
 	return _arcResolver2.default.adaptResource('DIST/default', flags);
 };
 
-router.get('/', function (req, res) {
+router.get('*', function (req, res) {
 	var flags = getFlags(req);
 	var outputPath = getOutputPath(flags);
 	var initialState = {};
@@ -913,6 +913,8 @@ router.get('/', function (req, res) {
 		outputPath: outputPath
 	});
 
+	// Add Vary header for managing SEO and HTTP caching 
+	res.header('vary', 'user-agent');
 	res.status(200).send(pageHtml);
 });
 
