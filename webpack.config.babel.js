@@ -1,6 +1,5 @@
 import arcWebpack from 'arc-webpack';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import path from 'path';
 import webpack from 'webpack';
@@ -43,8 +42,7 @@ const clientConfig = (flags) => ({
         }]
     },
     plugins: [
-        new ExtractTextWebpackPlugin('style.css'),
-        new HtmlWebpackPlugin()
+        new ExtractTextWebpackPlugin('style.css')
     ]
 });
 
