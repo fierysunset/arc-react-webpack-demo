@@ -16,7 +16,7 @@ const flagset = [
     ['cornify', 'mobile']
 ];
 
-const clientConfig = (...flags) => ({
+const clientConfig = (flags) => ({
     entry: './src/app-client',
     resolve: {
         plugins: [
@@ -92,7 +92,7 @@ configArr.push(serverConfig());
 
 // And one per flagset for the client
 flagset.map(flags => {
-    configArr.push(clientConfig(...flags));
+    configArr.push(clientConfig(flags));
 });
 
 module.exports = configArr;
