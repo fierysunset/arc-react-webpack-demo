@@ -1,6 +1,6 @@
 # ARC React Webpack Demo
 
-An adaptive web application demo supporting all devices built using [ARC](https://github.com/mlrawlings/arc)!
+An adaptive web application demo supporting all devices built using [ARC](https://github.com/eBay/arc)!
 
 The UI shown in the demo is a rough representation of eBay's View Item page (as of June 2017).
 
